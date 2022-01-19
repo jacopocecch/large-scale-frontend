@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -53,7 +54,12 @@ public class FXMLSongInfoDocumentController implements Initializable{
         name.setText(selectedSong.getName());
         album.setText(selectedSong.getAlbum());
         artist.setText(selectedSong.getArtists()); //agisci su array
+        image.setImage(selectedSong.getImage().getImage());
         releaseDate.setText(selectedSong.getReleaseDate());
+        name.setEditable(false);
+        album.setEditable(false);
+        artist.setEditable(false);
+        releaseDate.setEditable(false);
         //sotituisci con selectedSong.get() ecc
         values.getData().add(new XYChart.Data<>("Danceability", 2));
         values.getData().add(new XYChart.Data<>("Tempo", 3));

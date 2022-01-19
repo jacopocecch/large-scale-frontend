@@ -108,7 +108,6 @@ public class FXMLRecommendedSongsDocumentController implements Initializable{
                                         SongBean song = getTableView().getItems().get(getIndex());
                                         unlikeSong(song.getId());
                                         System.out.println("User unliked a song");
-                                        btn.setDisable(true);
                                     });
                                     Image img = new Image("https://cdn-icons-png.flaticon.com/512/15/15107.png");
                                     ImageView view = new ImageView(img);
@@ -141,7 +140,6 @@ public class FXMLRecommendedSongsDocumentController implements Initializable{
                                         FXMLSongInfoDocumentController.selectedSong = song;
                                         showSongInfo(event);
                                         System.out.println("User want more information about the song");
-                                        btn.setDisable(true);
                                     });
                                     setGraphic(btn);
                                 }

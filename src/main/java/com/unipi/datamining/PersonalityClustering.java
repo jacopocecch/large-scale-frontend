@@ -1,6 +1,7 @@
 package com.unipi.datamining;
 import com.unipi.datamining.API.API;
 import com.unipi.datamining.entities.*;
+import com.unipi.datamining.gui.FXMLSongInfoDocumentController;
 import com.unipi.datamining.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -99,6 +100,31 @@ public class PersonalityClustering extends Application {
         user = null;
     }
 
+    public static void likeSong(String songId){
+
+    }
+
+    public static void unlikeSong(String songId){
+
+    }
+
+    public static List<Comment> getComments(Song song){
+        List<Comment> list = new ArrayList<>();
+        Comment comment = new Comment("1", "Ciao","Ciao","Ciao");
+        list.add(comment);
+        return list;
+    }
+
+    public static void commentSong(String comment, Song song){
+        // to do
+    }
+
+    public static double[] getAverageMusicValues(){
+        // to do
+        return new double[]{1,2,3,4,5,6};
+    }
+
+
     public static void updateUserInfo(User newUser){
         newUser.setSurvey(user.getSurvey());
         newUser.setCluster(user.getCluster());
@@ -160,6 +186,13 @@ public class PersonalityClustering extends Application {
 
     public static List<User> getSimilarUsers(){
         return API.getSimilarUsers(user);
+    }
+
+    public static List<Song> getRecommendedSongs(){
+        List<Song> list = new ArrayList<>();
+        Song song = new Song("1", "Ciao","Ciao",new String[]{"Ciao"},null,"1995");
+        list.add(song);
+        return list;
     }
 
     public static List<User> getFriendships(){

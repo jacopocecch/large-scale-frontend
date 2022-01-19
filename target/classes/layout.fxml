@@ -9,76 +9,82 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unipi.datamining.gui.FXMLHomeDocumentController">
     <children>
-      <AnchorPane layoutX="2.0" layoutY="104.0" prefHeight="194.0" prefWidth="171.0" style="-fx-background-color: #66B2FF;" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="435.0" AnchorPane.topAnchor="104.0">
-         <children>
-            <AnchorPane layoutX="-6.0" layoutY="-10.0" prefHeight="402.0" prefWidth="32.0" style="-fx-background-color: #99CCFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </AnchorPane>
-            <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="37.0" mnemonicParsing="false" onAction="#showFriendRequests" prefHeight="31.0" prefWidth="169.0" style="-fx-background-color: None;" text="Friends Requests" textAlignment="RIGHT">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="https://cdn-icons-png.flaticon.com/512/4458/4458537.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="126.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="31.0" prefWidth="169.0" style="-fx-background-color: None;" text="Settings">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutX="-1.0" layoutY="155.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="169.0" style="-fx-background-color: None;" text="Logout">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="https://cdn-icons-png.flaticon.com/512/56/56805.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutX="-1.0" layoutY="95.0" mnemonicParsing="false" onAction="#showStats" prefHeight="31.0" prefWidth="169.0" style="-fx-background-color: None;" text="Stats" textAlignment="RIGHT">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="https://cdn-icons-png.flaticon.com/512/711/711976.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="68.0" mnemonicParsing="false" onAction="#showFriendships" prefHeight="31.0" prefWidth="169.0" style="-fx-background-color: None;" text="Friendships">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="https://img.icons8.com/ios-filled/344/friends.pnghttps://img.icons8.com/ios-filled/344/friends.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="6.0" mnemonicParsing="false" onAction="#showHome" prefHeight="31.0" prefWidth="169.0" style="-fx-background-color: None;" text="Home" textAlignment="RIGHT">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="https://cdn-icons-png.flaticon.com/512/25/25694.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </AnchorPane>
+       <AnchorPane layoutY="93.0" prefHeight="221.0" prefWidth="177.0" style="-fx-background-color: #66B2FF;" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="430.0" AnchorPane.topAnchor="93.0">
+          <children>
+             <AnchorPane layoutX="-6.0" layoutY="-10.0" prefHeight="402.0" prefWidth="32.0" style="-fx-background-color: #99CCFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <effect>
+                   <DropShadow />
+                </effect>
+             </AnchorPane>
+             <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#showFriendRequests" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: None;" text="Friends Requests" textAlignment="RIGHT">
+                <graphic>
+                   <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="https://cdn-icons-png.flaticon.com/512/4458/4458537.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="159.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: None;" text="Settings">
+                <graphic>
+                   <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="190.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: None;" text="Logout">
+                <graphic>
+                   <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="https://cdn-icons-png.flaticon.com/512/56/56805.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="129.0" mnemonicParsing="false" onAction="#showStats" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: None;" text="Stats" textAlignment="RIGHT">
+                <graphic>
+                   <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="https://cdn-icons-png.flaticon.com/512/711/711976.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="6.0" mnemonicParsing="false" onAction="#showRecommendedSongs" prefHeight="31.0" prefWidth="169.0" style="-fx-background-color: None;" text="Recommended Songs" textAlignment="RIGHT">
+                <graphic>
+                   <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="https://cdn-icons-png.flaticon.com/512/727/727218.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#showFriendships" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: None;" text="Friendships">
+                <graphic>
+                   <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="https://cdn-icons-png.flaticon.com/512/3062/3062103.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+             <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="39.0" mnemonicParsing="false" onAction="#showRecommendedUsers" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: None;" text="Recommended Friends ">
+                <graphic>
+                   <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="https://cdn-icons-png.flaticon.com/512/3820/3820147.png" />
+                      </image>
+                   </ImageView>
+                </graphic>
+             </Button>
+          </children>
+          <effect>
+             <DropShadow />
+          </effect>
+       </AnchorPane>
           <AnchorPane fx:id="layoutPane" layoutX="173.0" layoutY="2.0" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="423.0">
-              <children>
-            <BottomNavigation layoutX="94.0" layoutY="30.0" />
-              </children>
       </AnchorPane>
     </children>
 </AnchorPane>

@@ -14,6 +14,7 @@ public class FXMLMusicStatsDocumentController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        musicBarChart.setStyle("-fx-bar-fill: blue;");
         XYChart.Series<String, Number> values = new XYChart.Series<>();
         double[] musicValues = getAverageMusicValues();
         values.getData().add(new XYChart.Data<>("Danceability", musicValues[0]));

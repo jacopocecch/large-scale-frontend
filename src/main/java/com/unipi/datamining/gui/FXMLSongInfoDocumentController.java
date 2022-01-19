@@ -35,6 +35,7 @@ public class FXMLSongInfoDocumentController implements Initializable{
 
     @FXML
     private void showComments(ActionEvent event){
+        featureBarChart.setStyle("-fx-bar-fill: blue;");
         System.out.println("Loading the stats page");
         LoaderFXML object = new LoaderFXML();
         Pane commentsPane = object.getPage("comments");

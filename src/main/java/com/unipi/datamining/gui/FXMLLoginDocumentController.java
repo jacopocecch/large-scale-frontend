@@ -1,5 +1,6 @@
 package com.unipi.datamining.gui;
 
+import com.unipi.datamining.PersonalityClustering;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,7 +49,7 @@ public class FXMLLoginDocumentController implements Initializable{
         System.out.println("User logged in succesfully!");
         LoaderFXML object = new LoaderFXML();
         Pane layout;
-        FXMLHomeDocumentController.admin = true;
+        FXMLHomeDocumentController.admin = PersonalityClustering.user.getAdmin();
         if(FXMLHomeDocumentController.admin)
             layout = object.getPage("layoutAdmin");
         else layout = object.getPage("layout");

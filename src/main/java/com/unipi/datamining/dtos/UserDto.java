@@ -21,6 +21,7 @@ public class UserDto implements Serializable {
     private String image;
     private SurveyDto survey;
     private int cluster;
+    private boolean admin;
 
     public UserDto() {
     }
@@ -65,6 +66,14 @@ public class UserDto implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     public int getCluster() {

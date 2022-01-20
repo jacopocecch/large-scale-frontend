@@ -15,7 +15,7 @@
             <Font name="System Bold" size="16.0" />
          </font></Label>
       <Text layoutX="138.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Average Music Values" wrappingWidth="155.0" />
-      <BarChart fx:id="musicBarChart" layoutX="24.0" layoutY="69.0" legendVisible="false" prefHeight="313.0" prefWidth="375.0" style="-fx-bar-fill: #99CCFF;" stylesheets="@style.css">
+      <BarChart fx:id="musicBarChart" layoutX="24.0" layoutY="77.0" legendVisible="false" prefHeight="313.0" prefWidth="375.0" style="-fx-bar-fill: #99CCFF;" stylesheets="@style.css">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

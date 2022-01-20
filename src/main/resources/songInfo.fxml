@@ -20,7 +20,7 @@
       <Label layoutX="189.0" layoutY="74.0" text="Album" />
       <Label layoutX="190.0" layoutY="40.0" text="Name" />
       <ImageView fx:id="image" fitHeight="107.0" fitWidth="116.0" layoutX="25.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
-      <BarChart fx:id="featureBarChart" layoutX="98.0" layoutY="179.0" prefHeight="160.0" prefWidth="217.0">
+      <BarChart fx:id="featureBarChart" layoutX="98.0" layoutY="179.0" prefHeight="160.0" prefWidth="217.0" stylesheets="@style.css">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

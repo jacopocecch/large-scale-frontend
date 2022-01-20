@@ -22,6 +22,7 @@ public class User {
     private String country;
     private Survey survey;
     private int cluster;
+    private boolean admin;
     private FriendRequest friendRequest;
 
     public User(String id) {
@@ -57,6 +58,14 @@ public class User {
         if (neo4jUser.getFriendRequest() != null) {
             this.friendRequest = new FriendRequest(neo4jUser.getFriendRequest());
         }
+    }
+
+    public boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     public User(UserDto userDto){

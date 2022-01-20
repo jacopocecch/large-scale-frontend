@@ -47,7 +47,11 @@ public class FXMLLoginDocumentController implements Initializable{
         }
         System.out.println("User logged in succesfully!");
         LoaderFXML object = new LoaderFXML();
-        Pane layout = object.getPage("layout");
+        Pane layout;
+        FXMLHomeDocumentController.admin = true;
+        if(FXMLHomeDocumentController.admin)
+            layout = object.getPage("layoutAdmin");
+        else layout = object.getPage("layout");
         try {
             anchorPane.getChildren().clear();
             anchorPane.getChildren().add(layout);

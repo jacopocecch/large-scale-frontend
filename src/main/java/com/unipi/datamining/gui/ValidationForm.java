@@ -27,4 +27,10 @@ public class ValidationForm {
         Matcher matcher = pattern.matcher(phoneNumber);
         return matcher.matches();
     }
+
+    public static boolean validYear(double year) {
+        if(year < LocalDate.now().getYear() - 110 || year >= LocalDate.now().getYear())
+            return false;
+        else return true;
+    }
 }

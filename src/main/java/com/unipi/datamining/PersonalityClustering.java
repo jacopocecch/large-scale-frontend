@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -195,7 +196,38 @@ public class PersonalityClustering extends Application {
         return list;
     }
 
-    public static List<User> getFriendships(){
+    public static List<Song> getSongsByName(String name){
+        List<Song> list = new ArrayList<>();
+        Song song = new Song("1", "Ciao","Ciao",new String[]{"Ciao"},null,"1995");
+        list.add(song);
+        return list;
+    }
+
+
+    public static List<User> getUsersByUsername(String username){
+        List<User> list = new ArrayList<>();
+        User user = new User("Paolo", "Lucio", "Mangione", "email@email.com", "1234567890", "password", "M", null, null,"Italy", null);
+        list.add(user);
+        return list;
+    }
+
+    public static void deleteSong(Song song){
+        // to do
+    }
+
+    public static void deleteUser(User user){
+        // to do
+    }
+
+    public static void quarantineUser(User user){
+        // to do
+    }
+
+    public static void addNewSong(String name, String album, String artist, int year, String image, double danceability, double energy, double loudness, double speechiness, double acousticness, double instrumentalness, double liveness, double valence) {
+        // to do
+    }
+
+        public static List<User> getFriendships(){
         return API.getFriendships(user);
     }
 

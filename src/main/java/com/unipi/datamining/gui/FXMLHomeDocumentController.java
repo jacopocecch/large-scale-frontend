@@ -11,6 +11,7 @@ import static com.unipi.datamining.PersonalityClustering.*;
 
 public class FXMLHomeDocumentController implements Initializable{
     private boolean initialized;
+    protected static boolean admin;
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -51,6 +52,36 @@ public class FXMLHomeDocumentController implements Initializable{
         System.out.println("Showing the friendships of the user");
         LoaderFXML object = new LoaderFXML();
         Pane homePane = object.getPage("friends");
+        try {
+            if(layoutPane != null)
+                layoutPane.getChildren().clear();
+            assert layoutPane != null;
+            layoutPane.getChildren().add(homePane);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void showUsersAdminPage(ActionEvent event){
+        System.out.println("Showing the users of the admin");
+        LoaderFXML object = new LoaderFXML();
+        Pane homePane = object.getPage("usersAdmin");
+        try {
+            if(layoutPane != null)
+                layoutPane.getChildren().clear();
+            assert layoutPane != null;
+            layoutPane.getChildren().add(homePane);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void showSongsAdminPage(ActionEvent event){
+        System.out.println("Showing the users of the admin");
+        LoaderFXML object = new LoaderFXML();
+        Pane homePane = object.getPage("songsAdmin");
         try {
             if(layoutPane != null)
                 layoutPane.getChildren().clear();
@@ -119,7 +150,9 @@ public class FXMLHomeDocumentController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(!initialized && layoutPane != null){
-            showRecommendedSongs(new ActionEvent());
+            if(!admin)
+                showRecommendedSongs(new ActionEvent());
+            else showSongsAdminPage(new ActionEvent());
             initialized = true;
         }
     }

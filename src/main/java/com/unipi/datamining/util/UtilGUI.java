@@ -82,14 +82,14 @@ public class UtilGUI {
         if(user.getConscientiousness() > 3)
             description +=  "You are efficient and organized.\n";
         else description += "You are easy-going and laid back.\n";
-        if(user.getExtroversion() > 3)
+        if(user.getExtraversion() > 3)
             description += "You are outgoing and energetic.\n";
         else description += "You are solitary and reserved.\n";
         if(user.getAgreeableness() > 3)
             description += "You are friendly and compassionate.\n";
         else
             description += "You are analytical and detached.\n";
-        if(user.getConscientiousness() > 3)
+        if(user.getNeuroticism() > 3)
             description += "You are sensitive and you tend to be nervous.";
         else
             description += "You are secure and stable.";

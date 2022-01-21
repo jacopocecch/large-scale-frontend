@@ -37,6 +37,8 @@ public class FXMLHomeDocumentController implements Initializable{
         System.out.println("Loading the recommended friends page");
         LoaderFXML object = new LoaderFXML();
         Pane homePane = object.getPage("recommendedUsers");
+        if(homePane == null)
+            System.out.println("HomePane null");
         try {
             if(layoutPane != null)
                 layoutPane.getChildren().clear();

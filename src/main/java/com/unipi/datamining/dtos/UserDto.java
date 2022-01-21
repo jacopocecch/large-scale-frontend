@@ -19,7 +19,12 @@ public class UserDto implements Serializable {
     private String email;
     private LocalDate registrationDate;
     private String image;
-    private SurveyDto survey;
+    private double agreeableness;
+    private double extraversion;
+    private double neuroticism;
+    private double openness;
+    private double conscientiousness;
+    private double timeSpent;
     private int cluster;
     private boolean admin;
 
@@ -39,7 +44,6 @@ public class UserDto implements Serializable {
         this.password = password;
         this.registrationDate = registrationDate;
         this.image = image;
-        this.survey = survey;
         this.cluster = cluster;
     }
 
@@ -56,8 +60,13 @@ public class UserDto implements Serializable {
         this.email = user.getEmail();
         this.registrationDate = user.getRegistrationDate();
         this.image = user.getImage();
-        this.survey = new SurveyDto(user.getSurvey());
         this.cluster = user.getCluster();
+        this.agreeableness = user.getAgreeableness();
+        this.conscientiousness = user.getConscientiousness();
+        this.extraversion = user.getExtraversion();
+        this.neuroticism = user.getNeuroticism();
+        this.openness = user.getOpenness();
+        this.timeSpent = user.getTimeSpent();
     }
 
     public String getId() {
@@ -164,20 +173,60 @@ public class UserDto implements Serializable {
         this.image = image;
     }
 
-    public SurveyDto getSurvey() {
-        return survey;
-    }
-
-    public void setSurvey(SurveyDto survey) {
-        this.survey = survey;
-    }
-
     public String getPassword(){
         return password;
     }
 
     public void setPassword(String password){
         this.password = password;
+    }
+
+    public void setTimeSpent(double timeSpent) {
+        this.timeSpent = timeSpent;
+    }
+
+    public double getTimeSpent() {
+        return timeSpent;
+    }
+
+    public void setOpenness(double openness) {
+        this.openness = openness;
+    }
+
+    public double getOpenness() {
+        return openness;
+    }
+
+    public void setNeuroticism(double neuroticism) {
+        this.neuroticism = neuroticism;
+    }
+
+    public double getNeuroticism() {
+        return neuroticism;
+    }
+
+    public void setConscientiousness(double conscientiousness) {
+        this.conscientiousness = conscientiousness;
+    }
+
+    public double getConscientiousness() {
+        return conscientiousness;
+    }
+
+    public void setExtraversion(double extraversion) {
+        this.extraversion = extraversion;
+    }
+
+    public double getExtraversion() {
+        return extraversion;
+    }
+
+    public double getAgreeableness() {
+        return agreeableness;
+    }
+
+    public void setAgreeableness(double agreeableness) {
+        this.agreeableness = agreeableness;
     }
 
     @Override
@@ -195,7 +244,6 @@ public class UserDto implements Serializable {
                 ", email='" + email + '\'' +
                 ", registrationDate=" + registrationDate +
                 ", image='" + image + '\'' +
-                ", survey=" + survey +
                 ", cluster=" + cluster +
                 '}';
     }

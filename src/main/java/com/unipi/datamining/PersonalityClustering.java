@@ -66,28 +66,38 @@ public class PersonalityClustering extends Application {
                     }
                 }
             }
-            ArrayList<Question> ext = new ArrayList<>();
+            double value = 0;
+            double cumulativeTime = 0;
             for(int i = 0; i < 10; ++i){
-                ext.add(new Question(getQuestions().get(i), answers[i], times[i]));
+               value += answers[i];
+               cumulativeTime += times[i];
             }
-            ArrayList<Question> est = new ArrayList<>();
+            user.setExtraversion(value/10);
+            value = 0;
             for(int i = 10; i < 20; ++i){
-                est.add(new Question(getQuestions().get(i), answers[i], times[i]));
+                value += answers[i];
+                cumulativeTime += times[i];
             }
-            ArrayList<Question> agr = new ArrayList<>();
+            user.setNeuroticism(value/10);
+            value = 0;
             for(int i = 20; i < 30; ++i){
-                agr.add(new Question(getQuestions().get(i), answers[i], times[i]));
+                value += answers[i];
+                cumulativeTime += times[i];
             }
-            ArrayList<Question> csn = new ArrayList<>();
+            user.setAgreeableness(value/10);
+            value = 0;
             for(int i = 30; i < 40; ++i){
-                csn.add(new Question(getQuestions().get(i), answers[i], times[i]));
+                value += answers[i];
+                cumulativeTime += times[i];
             }
-            ArrayList<Question> opn = new ArrayList<>();
+            user.setConscientiousness(value/10);
+            value = 0;
             for(int i = 40; i < 50; ++i){
-                opn.add(new Question(getQuestions().get(i), answers[i], times[i]));
+                value += answers[i];
+                cumulativeTime += times[i];
             }
-            Survey survey = new Survey(ext, est, agr, csn, opn);
-            user.setSurvey(survey);
+            user.setOpenness(value/10);
+            user.setTimeSpent(cumulativeTime/60);
             System.out.println("Sending answers to the server");
             user = API.registerUser(user);
         }
@@ -120,14 +130,24 @@ public class PersonalityClustering extends Application {
         // to do
     }
 
-    public static double[] getAverageMusicValues(){
+    public static double[] getAverageClusterMusicValues(){
         // to do
         return new double[]{1,2,3,4,5,6};
     }
 
+    public static String getMainCluster(Song selectedSong){
+        // to do
+        return "1";
+    }
+
 
     public static void updateUserInfo(User newUser){
-        newUser.setSurvey(user.getSurvey());
+        newUser.setAgreeableness(user.getAgreeableness());
+        newUser.setNeuroticism(user.getNeuroticism());
+        newUser.setConscientiousness(user.getConscientiousness());
+        newUser.setOpenness(user.getOpenness());
+        newUser.setExtraversion(user.getExtraversion());
+        newUser.setTimeSpent(user.getTimeSpent());
         newUser.setCluster(user.getCluster());
         newUser.setId(user.getId());
         API.updateUserInfo(newUser);
@@ -155,8 +175,8 @@ public class PersonalityClustering extends Application {
         ClusterValues clusterValues= API.getClusterValues(user);
         if(clusterValues != null) {
             double diffC = Math.abs(user.getConscientiousness() - clusterValues.getConscientiousness());
-            double diffN = Math.abs(user.getNeurotic() - clusterValues.getNeuroticism());
-            double diffE = Math.abs(user.getExtroversion() - clusterValues.getExtraversion());
+            double diffN = Math.abs(user.getNeuroticism() - clusterValues.getNeuroticism());
+            double diffE = Math.abs(user.getExtraversion() - clusterValues.getExtraversion());
             double diffA = Math.abs(user.getAgreeableness() - clusterValues.getAgreeableness());
             double diffO = Math.abs(user.getOpenness() - clusterValues.getOpenness());
             double deviation = diffC + diffN + diffE + diffA + diffO;
@@ -169,8 +189,8 @@ public class PersonalityClustering extends Application {
         if(NN == null)
             return null;
         double diffC = (user.getConscientiousness() - NN.getConscientiousness());
-        double diffN = (user.getNeurotic() - NN.getNeurotic());
-        double diffE = (user.getExtroversion() - NN.getExtroversion());
+        double diffN = (user.getNeuroticism() - NN.getNeuroticism());
+        double diffE = (user.getExtraversion() - NN.getExtraversion());
         double diffA = (user.getAgreeableness() - NN.getAgreeableness());
         double diffO = (user.getOpenness() - NN.getOpenness());
         double deviation = Math.sqrt(diffC*diffC + diffN*diffN + diffE*diffE + diffA*diffA + diffO*diffO);
@@ -182,23 +202,32 @@ public class PersonalityClustering extends Application {
     }
 
     public static double[] getPersonalityValues(){
-        return new double[]{user.getOpenness(),user.getAgreeableness(),user.getNeurotic(),user.getExtroversion(),user.getConscientiousness(),user.getTimeSpent()};
+        return new double[]{user.getOpenness(),user.getAgreeableness(),user.getNeuroticism(),user.getExtraversion(),user.getConscientiousness(),user.getTimeSpent()};
     }
 
     public static List<User> getSimilarUsers(){
-        return API.getSimilarUsers(user);
+        List<User> similar = API.getSimilarUsers(user);
+        for(User user: similar){
+            System.out.println(user);
+        }
+        return similar;
     }
 
     public static List<Song> getRecommendedSongs(){
         List<Song> list = new ArrayList<>();
-        Song song = new Song("1", "Ciao","Ciao",new String[]{"Ciao"},null,"1995");
+        List<String> artists = new ArrayList<>();
+        artists.add("Giacomo");
+        Song song = new Song("1", "Ciao", "Ciao", artists,null);
         list.add(song);
         return list;
+        //return API.getRecommendedSongs(user);
     }
 
     public static List<Song> getSongsByName(String name){
         List<Song> list = new ArrayList<>();
-        Song song = new Song("1", "Ciao","Ciao",new String[]{"Ciao"},null,"1995");
+        List<String> artists = new ArrayList<>();
+        artists.add("Giacomo");
+        Song song = new Song("1", "Ciao", "Ciao", artists,null);
         list.add(song);
         return list;
     }
@@ -212,11 +241,11 @@ public class PersonalityClustering extends Application {
     }
 
     public static void deleteSong(Song song){
-        // to do
+        API.deleteSong(song);
     }
 
     public static void deleteUser(User user){
-        // to do
+        API.deleteUser(user);
     }
 
     public static void quarantineUser(User user){
@@ -224,10 +253,10 @@ public class PersonalityClustering extends Application {
     }
 
     public static void addNewSong(String name, String album, String artist, int year, String image, double danceability, double energy, double loudness, double speechiness, double acousticness, double instrumentalness, double liveness, double valence) {
-        // to do
+        API.createSong(new Song(name, album, artist, year, image, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence));
     }
 
-        public static List<User> getFriendships(){
+    public static List<User> getFriendships(){
         return API.getFriendships(user);
     }
 

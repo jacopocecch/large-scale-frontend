@@ -20,7 +20,12 @@ public class User {
     private LocalDate dateOfBirth;
     private LocalDate registrationDate;
     private String country;
-    private Survey survey;
+    private double agreeableness;
+    private double extraversion;
+    private double neuroticism;
+    private double openness;
+    private double conscientiousness;
+    private double timeSpent;
     private int cluster;
     private boolean admin;
     private FriendRequest friendRequest;
@@ -83,11 +88,12 @@ public class User {
         this.registrationDate = userDto.getRegistrationDate();
         this.fullName = this.firstName + " " + this.lastName;
         this.cluster = userDto.getCluster();
-        if (userDto.getSurvey() == null) {
-            this.survey = null;
-        } else {
-            this.survey = new Survey(userDto.getSurvey());
-        }
+        this.agreeableness = userDto.getAgreeableness();
+        this.neuroticism = userDto.getNeuroticism();
+        this.extraversion = userDto.getExtraversion();
+        this.conscientiousness = userDto.getConscientiousness();
+        this.openness = userDto.getOpenness();
+        this.timeSpent = userDto.getTimeSpent();
     }
 
     public User(UserBean userBean){
@@ -122,61 +128,51 @@ public class User {
     }
 
     public double getAgreeableness(){
-        double agr = 0;
-        for(int i = 0; i < 10; ++i) {
-            agr += survey.getAgr().get(i).getValue();
-        }
-        agr /= 10;
-        return agr;
+        return agreeableness;
     }
 
     public double getOpenness(){
-        double opn = 0;
-        for(int i = 0; i < 10; ++i) {
-            opn += survey.getOpn().get(i).getValue();
-        }
-        opn /= 10;
-        return opn;
+        return openness;
     }
 
-    public double getExtroversion(){
-        double ext = 0;
-        for(int i = 0; i < 10; ++i) {
-            ext += survey.getExt().get(i).getValue();
-        }
-        ext /= 10;
-        return ext;
+    public double getExtraversion(){
+        return extraversion;
     }
 
     public double getTimeSpent(){
-        double time = 0;
-        for(int i = 0; i < 10; ++i) {
-            time += survey.getOpn().get(i).getTime();
-            time += survey.getCsn().get(i).getTime();
-            time += survey.getAgr().get(i).getTime();
-            time += survey.getExt().get(i).getTime();
-            time += survey.getEst().get(i).getTime();
-        }
-        time /= 50;
-        return time;
+        return timeSpent;
     }
 
-    public double getNeurotic(){
-        double est = 0;
-        for(int i = 0; i < 10; ++i) {
-            est += survey.getEst().get(i).getValue();
-        }
-        est /= 10;
-        return est;
+    public double getNeuroticism(){
+        return neuroticism;
     }
 
     public double getConscientiousness(){
-        double csn = 0;
-        for(int i = 0; i < 10; ++i) {
-            csn += survey.getCsn().get(i).getValue();
-        }
-        csn /= 10;
-        return csn;
+        return conscientiousness;
+    }
+
+    public void setAgreeableness(double agreeableness) {
+        this.agreeableness = agreeableness;
+    }
+
+    public void setExtraversion(double extraversion) {
+        this.extraversion = extraversion;
+    }
+
+    public void setConscientiousness(double conscientiousness) {
+        this.conscientiousness = conscientiousness;
+    }
+
+    public void setOpenness(double openness) {
+        this.openness = openness;
+    }
+
+    public void setTimeSpent(double timeSpent) {
+        this.timeSpent = timeSpent;
+    }
+
+    public void setNeuroticism(double neuroticism) {
+        this.neuroticism = neuroticism;
     }
 
     public void setFriendRequest(FriendRequest friendRequest) {
@@ -283,15 +279,6 @@ public class User {
     public void setId(String id){
         this.id = id;
     }
-
-    public Survey getSurvey() {
-        return survey;
-    }
-
-    public void setSurvey(Survey survey) {
-        this.survey = survey;
-    }
-
 
 }
 

@@ -2,29 +2,41 @@ package com.unipi.datamining.entities;
 
 import com.unipi.datamining.beans.SongBean;
 import com.unipi.datamining.beans.UserBean;
+import com.unipi.datamining.dtos.Neo4jSongDto;
 import com.unipi.datamining.dtos.Neo4jUserDto;
+import com.unipi.datamining.dtos.SongDto;
 import com.unipi.datamining.dtos.UserDto;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Song {
     private String id;
-    private String image;
     private String name;
     private String album;
-    private String[] artists;
-    private String releaseDate;
+    private List<String> artists = new ArrayList<>();
     private int trackNumber;
     private int discNumber;
     private boolean explicit;
+    private int key;
+    private int mode;
     private double danceability;
     private double energy;
-    private int key;
     private double loudness;
-    private int mode;
-    private double speechness;
+    private double speechiness;
+    private double acousticness;
+    private double instrumentalness;
+    private double liveness;
+    private double valence;
+    private int tempo;
+    private int duration;
+    private int timeSignature;
+    private int year;
+    private String image;
 
-    public Song(String id, String name, String album, String[] artists, String image, String releaseDate){
+    public Song(String id, String name, String album, List<String> artists, String image){
         this.id = id;
         this.name = name;
         this.album = album;
@@ -35,10 +47,71 @@ public class Song {
             this.image = image;
     }
 
+    public Song(String name, String album, String artists, int year, String image, double danceability, double energy, double loudness, double speechiness, double acousticness, double instrumentalness, double liveness, double valence){
+        this.name = name;
+        this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png";
+        this.artists = Arrays.stream(artists.split(",")).toList();
+        this.album = album;
+        this.year = year;
+        this.image = image;
+        this.danceability = danceability;
+        this.energy = energy;
+        this.loudness = loudness;
+        this.speechiness = speechiness;
+        this.acousticness = acousticness;
+        this.instrumentalness = instrumentalness;
+        this.liveness = liveness;
+        this.valence = valence;
+    }
+
     public Song(SongBean songBean){
-        this.id = songBean.getId();
-        this.name = songBean.getName();
-        // to do
+        id = songBean.getId();
+        name = songBean.getName();
+        artists = Arrays.stream(songBean.getArtists().split(",")).toList();
+        album = songBean.getAlbum();
+        year = songBean.getYear();
+        danceability = songBean.getDanceability();
+        energy = songBean.getEnergy();
+        loudness = songBean.getLoudness();
+        speechiness = songBean.getSpeechiness();
+        acousticness = songBean.getAcousticness();
+        instrumentalness = songBean.getInstrumentalness();
+        liveness = songBean.getLiveness();
+        valence = songBean.getValence();
+    }
+
+    public Song(Neo4jSongDto song){
+        this.id = song.getId();
+        this.name = song.getName();
+        this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png";
+        this.artists = Arrays.stream(song.getAuthors().split(",")).toList();
+        this.album = song.getAlbum();
+    }
+
+    public Song(SongDto song){
+        this.id = song.getId();
+        this.name = song.getName();
+        this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png";
+        this.artists = song.getArtists();
+        this.album = song.getAlbum();
+        this.acousticness = song.getAcousticness();
+        this.danceability = song.getDanceability();
+        this.duration = song.getDuration();
+        this.discNumber = song.getDiscNumber();
+        this.explicit = song.isExplicit();
+        this.energy = song.getEnergy();
+        this.instrumentalness = song.getInstrumentalness();
+        this.liveness = song.getLiveness();
+        this.trackNumber = song.getTrackNumber();
+        this.key = song.getKey();
+        this.mode = song.getMode();
+        this.loudness = song.getLoudness();
+        this.speechiness = song.getSpeechiness();
+        this.valence = song.getValence();
+        this.tempo = song.getTempo();
+        this.duration = song.getDuration();
+        this.timeSignature = song.getTimeSignature();
+        this.year = song.getYear();
     }
 
     public String getId() {
@@ -53,14 +126,6 @@ public class Song {
         this.name = name;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public String getReleaseDate() {
-        return releaseDate;
-    }
-
     public String getAlbum() {
         return album;
     }
@@ -73,16 +138,160 @@ public class Song {
         return name;
     }
 
-    public String[] getArtists() {
+    public List<String> getArtists() {
         return artists;
     }
 
-    public void setArtists(String[] artists) {
+    public void setArtists(List<String> artists) {
         this.artists = artists;
     }
 
     public void setAlbum(String album) {
         this.album = album;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public boolean getExplicit() {
+        return explicit;
+    }
+
+    public boolean isExplicit() {
+        return explicit;
+    }
+
+    public double getDanceability() {
+        return danceability;
+    }
+
+    public int getDiscNumber() {
+        return discNumber;
+    }
+
+    public double getEnergy() {
+        return energy;
+    }
+
+    public double getAcousticness() {
+        return acousticness;
+    }
+
+    public double getInstrumentalness() {
+        return instrumentalness;
+    }
+
+    public double getLoudness() {
+        return loudness;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public double getSpeechiness() {
+        return speechiness;
+    }
+
+    public int getMode() {
+        return mode;
+    }
+
+    public double getLiveness() {
+        return liveness;
+    }
+
+    public void setDanceability(double danceability) {
+        this.danceability = danceability;
+    }
+
+    public int getTrackNumber() {
+        return trackNumber;
+    }
+
+    public void setDiscNumber(int discNumber) {
+        this.discNumber = discNumber;
+    }
+
+    public void setExplicit(boolean explicit) {
+        this.explicit = explicit;
+    }
+
+    public void setEnergy(double energy) {
+        this.energy = energy;
+    }
+
+    public void setAcousticness(double acousticness) {
+        this.acousticness = acousticness;
+    }
+
+    public double getValence() {
+        return valence;
+    }
+
+    public int getTempo() {
+        return tempo;
+    }
+
+    public void setInstrumentalness(double instrumentalness) {
+        this.instrumentalness = instrumentalness;
+    }
+
+    public void setTrackNumber(int trackNumber) {
+        this.trackNumber = trackNumber;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public void setLoudness(double loudness) {
+        this.loudness = loudness;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
+    }
+
+    public void setSpeechiness(double speechiness) {
+        this.speechiness = speechiness;
+    }
+
+    public void setLiveness(double liveness) {
+        this.liveness = liveness;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public int getTimeSignature() {
+        return timeSignature;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setTempo(int tempo) {
+        this.tempo = tempo;
+    }
+
+    public void setTimeSignature(int timeSignature) {
+        this.timeSignature = timeSignature;
+    }
+
+    public void setValence(double valence) {
+        this.valence = valence;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 }
 

@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="409.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unipi.datamining.gui.FXMLRecommendedUsersDocumentController">
+<AnchorPane fx:id="anchorPane" prefHeight="409.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unipi.datamining.gui.FXMLRecommendedUsersDocumentController">
    <children>
       <BottomNavigation layoutX="86.0" layoutY="53.0" prefHeight="34.0" prefWidth="261.0">
           <actionItems>

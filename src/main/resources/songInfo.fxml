@@ -8,19 +8,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="423.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unipi.datamining.gui.FXMLSongInfoDocumentController">
    <children>
       <Label layoutX="192.0" layoutY="108.0" text="Artist" />
-      <Label layoutX="157.0" layoutY="139.0" text="Release date" />
+      <Label layoutX="149.0" layoutY="139.0" text="Year of release" />
       <TextField fx:id="name" layoutX="243.0" layoutY="36.0" />
       <TextField fx:id="album" layoutX="243.0" layoutY="70.0" />
       <TextField fx:id="artist" layoutX="242.0" layoutY="104.0" />
-      <TextField fx:id="releaseDate" layoutX="242.0" layoutY="135.0" />
+      <TextField fx:id="yearOfRelease" layoutX="242.0" layoutY="135.0" />
       <Label layoutX="189.0" layoutY="74.0" text="Album" />
       <Label layoutX="190.0" layoutY="40.0" text="Name" />
       <ImageView fx:id="image" fitHeight="107.0" fitWidth="116.0" layoutX="25.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
-      <BarChart fx:id="featureBarChart" layoutX="98.0" layoutY="179.0" prefHeight="160.0" prefWidth="217.0" stylesheets="@style.css">
+      <BarChart fx:id="featureBarChart" layoutX="98.0" layoutY="167.0" prefHeight="160.0" prefWidth="217.0" stylesheets="@style.css">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -28,6 +29,11 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <Button layoutX="156.0" layoutY="339.0" mnemonicParsing="false" onAction="#showComments" style="-fx-background-color: #CCE5FF;" text="Show Comments" />
+      <Button layoutX="156.0" layoutY="360.0" mnemonicParsing="false" onAction="#showComments" style="-fx-background-color: #CCE5FF;" text="Show Comments" />
+      <Label layoutX="83.0" layoutY="327.0" text="Cluster mostly associated with the song:" />
+      <Label fx:id="mainCluster" layoutX="305.0" layoutY="327.0" prefHeight="17.0" prefWidth="94.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
    </children>
 </AnchorPane>

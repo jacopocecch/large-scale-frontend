@@ -1,11 +1,13 @@
 package com.unipi.datamining.gui;
 
 import com.unipi.datamining.beans.SongBean;
+import com.unipi.datamining.entities.Song;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,6 +16,8 @@ import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static com.unipi.datamining.PersonalityClustering.getMainCluster;
 
 
 public class FXMLSongInfoDocumentController implements Initializable{
@@ -26,9 +30,11 @@ public class FXMLSongInfoDocumentController implements Initializable{
     @FXML
     private TextField artist;
     @FXML
-    private TextField releaseDate;
+    private TextField yearOfRelease;
     @FXML
     private BarChart featureBarChart;
+    @FXML
+    private Label mainCluster;
     @FXML
     private ImageView image;
     public static SongBean selectedSong;
@@ -56,15 +62,19 @@ public class FXMLSongInfoDocumentController implements Initializable{
         album.setText(selectedSong.getAlbum());
         artist.setText(selectedSong.getArtists()); //agisci su array
         image.setImage(selectedSong.getImage().getImage());
-        releaseDate.setText(selectedSong.getReleaseDate());
+        yearOfRelease.setText(String.valueOf(selectedSong.getYear()));
         name.setEditable(false);
         album.setEditable(false);
         artist.setEditable(false);
-        releaseDate.setEditable(false);
-        //sotituisci con selectedSong.get() ecc
-        values.getData().add(new XYChart.Data<>("Danceability", 2));
-        values.getData().add(new XYChart.Data<>("Tempo", 3));
-        //....
+        yearOfRelease.setEditable(false);
+        values.getData().add(new XYChart.Data<>("Danceability", selectedSong.getDanceability()));
+        values.getData().add(new XYChart.Data<>("Acousticness", selectedSong.getAcousticness()));
+        values.getData().add(new XYChart.Data<>("Energy", selectedSong.getEnergy()));
+        values.getData().add(new XYChart.Data<>("Instrumentalness", selectedSong.getInstrumentalness()));
+        values.getData().add(new XYChart.Data<>("Liveness", selectedSong.getLiveness()));
+        values.getData().add(new XYChart.Data<>("Loudness", selectedSong.getLoudness()));
+        values.getData().add(new XYChart.Data<>("Valence", selectedSong.getValence()));
         featureBarChart.getData().addAll(values);
+        mainCluster.setText(getMainCluster(new Song(selectedSong)));
     }
 }

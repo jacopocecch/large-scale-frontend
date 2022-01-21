@@ -13,7 +13,15 @@ public class SongBean {
     private SimpleStringProperty name;
     private SimpleStringProperty album;
     private SimpleStringProperty artists;
-    private SimpleStringProperty releaseDate;
+    private int year;
+    private double danceability;
+    private double energy;
+    private double loudness;
+    private double speechiness;
+    private double acousticness;
+    private double instrumentalness;
+    private double liveness;
+    private double valence;
     private ImageView image;
 
 
@@ -23,9 +31,17 @@ public class SongBean {
         album = new SimpleStringProperty(song.getAlbum());
         artists = new SimpleStringProperty(String.join(",", song.getArtists()));
         image = new ImageView(song.getImage());
-        releaseDate = new SimpleStringProperty(song.getReleaseDate());
         image.setFitHeight(30);
         image.setFitWidth(30);
+        year = song.getYear();
+        danceability = song.getDanceability();
+        energy = song.getEnergy();
+        loudness = song.getLoudness();
+        speechiness = song.getSpeechiness();
+        acousticness = song.getAcousticness();
+        instrumentalness = song.getInstrumentalness();
+        liveness = song.getLiveness();
+        valence = song.getValence();
     }
 
     public void setId(String id) {
@@ -34,14 +50,6 @@ public class SongBean {
 
     public void setAlbum(String album) {
         this.album.set(album);
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate.set(releaseDate);
-    }
-
-    public String getReleaseDate() {
-        return releaseDate.get();
     }
 
     public void setArtists(String artists) {
@@ -74,6 +82,78 @@ public class SongBean {
 
     public String getId() {
         return id.get();
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setValence(double valence) {
+        this.valence = valence;
+    }
+
+    public void setLiveness(double liveness) {
+        this.liveness = liveness;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setSpeechiness(double speechiness) {
+        this.speechiness = speechiness;
+    }
+
+    public void setLoudness(double loudness) {
+        this.loudness = loudness;
+    }
+
+    public void setInstrumentalness(double instrumentalness) {
+        this.instrumentalness = instrumentalness;
+    }
+
+    public double getValence() {
+        return valence;
+    }
+
+    public void setAcousticness(double acousticness) {
+        this.acousticness = acousticness;
+    }
+
+    public void setEnergy(double energy) {
+        this.energy = energy;
+    }
+
+    public void setDanceability(double danceability) {
+        this.danceability = danceability;
+    }
+
+    public double getLiveness() {
+        return liveness;
+    }
+
+    public double getLoudness() {
+        return loudness;
+    }
+
+    public double getSpeechiness() {
+        return speechiness;
+    }
+
+    public double getInstrumentalness() {
+        return instrumentalness;
+    }
+
+    public double getAcousticness() {
+        return acousticness;
+    }
+
+    public double getEnergy() {
+        return energy;
+    }
+
+    public double getDanceability() {
+        return danceability;
     }
 }
 

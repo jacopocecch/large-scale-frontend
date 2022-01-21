@@ -1,11 +1,14 @@
 package com.unipi.datamining.API;
 import com.unipi.datamining.dtos.*;
 import com.unipi.datamining.entities.ClusterValues;
+import com.unipi.datamining.entities.Song;
 import com.unipi.datamining.entities.User;
 import com.unipi.datamining.util.ConfigurationParameters;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -32,6 +35,16 @@ public class API {
             throw new Exception(e.getMessage().split("\"")[10]);
         }
         return user;
+    }
+
+    public static void createSong(Song song){
+        SongDto songDto = new SongDto(song);
+        try {
+            SongDto response = restTemplate.postForObject(uri + "/songs/create", songDto, SongDto.class);
+            assert response != null;
+        } catch(Exception e){
+            System.out.println(e.getMessage().split("\"")[10]);
+        }
     }
 
 
@@ -74,6 +87,20 @@ public class API {
         }
         if(response.getBody() != null ) {
             return Arrays.stream(response.getBody()).map(User::new).toList();
+        } else return null;
+    }
+
+
+    public static List<Song> getRecommendedSongs(User user){
+        ResponseEntity<Neo4jSongDto[]> response;
+        try {
+            response = restTemplate.getForEntity(uri + "/songs/recommended/" + user.getId(), Neo4jSongDto[].class);
+        } catch(Exception e){
+            System.out.println(e.getMessage().split("\"")[10]);
+            return null;
+        }
+        if(response.getBody() != null ) {
+            return Arrays.stream(response.getBody()).map(Song::new).toList();
         } else return null;
     }
 
@@ -150,6 +177,23 @@ public class API {
         }
     }
 
+    public static void deleteSong(Song song){
+        try {
+            restTemplate.exchange(uri + "/songs/" + song.getId(), HttpMethod.DELETE, null, Void.class);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void deleteUser(User user){
+        try {
+            restTemplate.exchange(uri + "/users/" + user.getId(), HttpMethod.DELETE, null, Void.class);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+
     public static void updateUserInfo(User user){
         HttpEntity<UserDto> entity = new HttpEntity<>(new UserDto(user));
         restTemplate.exchange(uri + "/users/update/" ,
@@ -164,6 +208,15 @@ public class API {
              System.out.println(e.getMessage());
          }
      }
+
+    public static void updatePreferenceSong(User user, Song song, int status){
+        try {
+            restTemplate.exchange(uri + "/songs/like/?from=" + user.getId() + "&to=" + song.getId() + "&status=" + status, HttpMethod.PUT, null, Void.class);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
 
      public static void checkForUpdates(User user){
          try {

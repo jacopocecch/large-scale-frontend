@@ -111,19 +111,24 @@ public class PersonalityClustering extends Application {
         user = null;
     }
 
-    public static void likeSong(String songId){
-
+    public static void likeSong(Song song){
+        updatePreferenceSong(user, song, +1);
     }
 
-    public static void unlikeSong(String songId){
-
+    public static void unlikeSong(Song song){
+        updatePreferenceSong(user, song, -1);
     }
 
-    public static List<Comment> getComments(Song song){
+    public static List<Comment> showAllComments(Song song){
+        // to do
         List<Comment> list = new ArrayList<>();
-        Comment comment = new Comment("1", "Ciao","Ciao","Ciao");
+        Comment comment = new Comment("1", "1", "1","Ciao","Ciao","Ciao");
         list.add(comment);
         return list;
+    }
+
+    public static List<Comment> showComments(Song song){
+        return song.getComments();
     }
 
     public static void commentSong(String comment, Song song){
@@ -206,39 +211,27 @@ public class PersonalityClustering extends Application {
     }
 
     public static List<User> getSimilarUsers(){
-        List<User> similar = API.getSimilarUsers(user);
-        for(User user: similar){
-            System.out.println(user);
-        }
-        return similar;
+        return API.getSimilarUsers(user);
+    }
+
+    public static Song getMoreInformationSong(Song selectedSong){
+        return API.getSong(selectedSong);
     }
 
     public static List<Song> getRecommendedSongs(){
-        List<Song> list = new ArrayList<>();
-        List<String> artists = new ArrayList<>();
-        artists.add("Giacomo");
-        Song song = new Song("1", "Ciao", "Ciao", artists,null);
-        list.add(song);
-        return list;
-        //return API.getRecommendedSongs(user);
+        return API.getRecommendedSongs(user);
     }
 
     public static List<Song> getSongsByName(String name){
-        List<Song> list = new ArrayList<>();
-        List<String> artists = new ArrayList<>();
-        artists.add("Giacomo");
-        Song song = new Song("1", "Ciao", "Ciao", artists,null);
-        list.add(song);
-        return list;
+        return API.searchSongByName(name);
     }
 
 
     public static List<User> getUsersByUsername(String username){
-        List<User> list = new ArrayList<>();
-        User user = new User("Paolo", "Lucio", "Mangione", "email@email.com", "1234567890", "password", "M", null, null,"Italy", null);
-        list.add(user);
-        return list;
+        return API.searchUserByUsername(username);
     }
+
+
 
     public static void deleteSong(Song song){
         API.deleteSong(song);

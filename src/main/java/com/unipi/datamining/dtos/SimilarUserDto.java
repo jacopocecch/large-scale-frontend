@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class SimilarUserDto implements Serializable {
 
     private Long id;
-    private Neo4jUserDto user;
+    private InterfaceUserDto user;
     private double weight;
 
     public SimilarUserDto() {
     }
 
-    public SimilarUserDto(Long id, Neo4jUserDto userDto, double weight) {
+    public SimilarUserDto(Long id, InterfaceUserDto userDto, double weight) {
         this.id = id;
         this.user = userDto;
         this.weight = weight;
@@ -25,11 +25,11 @@ public class SimilarUserDto implements Serializable {
         this.id = id;
     }
 
-    public Neo4jUserDto getUser() {
+    public InterfaceUserDto getUser() {
         return user;
     }
 
-    public void setUser(Neo4jUserDto user) {
+    public void setUser(InterfaceUserDto user) {
         this.user = user;
     }
 

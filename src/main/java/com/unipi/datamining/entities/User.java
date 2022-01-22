@@ -1,7 +1,7 @@
 package com.unipi.datamining.entities;
 
 import com.unipi.datamining.beans.UserBean;
-import com.unipi.datamining.dtos.Neo4jUserDto;
+import com.unipi.datamining.dtos.InterfaceUserDto;
 import com.unipi.datamining.dtos.UserDto;
 
 import java.time.LocalDate;
@@ -53,11 +53,10 @@ public class User {
         this.password = password;
     }
 
-    public User(Neo4jUserDto neo4jUser){
+    public User(InterfaceUserDto neo4jUser){
         this.id = neo4jUser.getId();
-        this.fullName = neo4jUser.getFullName();
-        this.firstName = neo4jUser.getFullName().split(" ")[0];
-        this.lastName = neo4jUser.getFullName().split(" ")[1];
+        this.firstName = neo4jUser.getFirstName();
+        this.lastName = neo4jUser.getLastName();
         this.image = neo4jUser.getImage();
         this.country = neo4jUser.getCountry();
         if (neo4jUser.getFriendRequest() != null) {

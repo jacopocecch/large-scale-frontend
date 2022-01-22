@@ -117,14 +117,14 @@ public class FXMLRecommendedUsersDocumentController implements Initializable{
                         };
                     }
                 };
-        sendRequestColumn.setCellFactory(cellFactory);
+        sendRequestColumn.setCellFactory(cellFactory);;
         List<User> similarUsers = getSimilarUsers();
         ObservableList<UserBean> userBeans = FXCollections.observableArrayList();
         if(similarUsers != null) {
             for (User similarUser : similarUsers) {
                 userBeans.add(new UserBean(similarUser));
             }
+            tableView.setItems(userBeans);
         }
-        tableView.setItems(userBeans);
     }
 }

@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static com.unipi.datamining.PersonalityClustering.getMainCluster;
+import static com.unipi.datamining.PersonalityClustering.getMoreInformationSong;
 
 
 public class FXMLSongInfoDocumentController implements Initializable{
@@ -56,11 +57,11 @@ public class FXMLSongInfoDocumentController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         featureBarChart.setStyle("-fx-bar-fill: blue;");
-        // song bar chart
+        selectedSong = new SongBean(getMoreInformationSong(new Song(selectedSong)));
         XYChart.Series<String, Number> values = new XYChart.Series<>();
         name.setText(selectedSong.getName());
         album.setText(selectedSong.getAlbum());
-        artist.setText(selectedSong.getArtists()); //agisci su array
+        artist.setText(selectedSong.getArtists());
         image.setImage(selectedSong.getImage().getImage());
         yearOfRelease.setText(String.valueOf(selectedSong.getYear()));
         name.setEditable(false);
@@ -72,7 +73,6 @@ public class FXMLSongInfoDocumentController implements Initializable{
         values.getData().add(new XYChart.Data<>("Energy", selectedSong.getEnergy()));
         values.getData().add(new XYChart.Data<>("Instrumentalness", selectedSong.getInstrumentalness()));
         values.getData().add(new XYChart.Data<>("Liveness", selectedSong.getLiveness()));
-        values.getData().add(new XYChart.Data<>("Loudness", selectedSong.getLoudness()));
         values.getData().add(new XYChart.Data<>("Valence", selectedSong.getValence()));
         featureBarChart.getData().addAll(values);
         mainCluster.setText(getMainCluster(new Song(selectedSong)));

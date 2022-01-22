@@ -4,6 +4,7 @@ import com.unipi.datamining.entities.Song;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SongDto implements Serializable {
@@ -29,6 +30,7 @@ public class SongDto implements Serializable {
     private int duration;
     private int timeSignature;
     private int year;
+    private List<CommentSubsetDto> comments;
 
     public SongDto() {
     }
@@ -60,7 +62,7 @@ public class SongDto implements Serializable {
     public SongDto(Song song){
         this.id = song.getId();
         this.name = song.getName();
-        this.artists = song.getArtists();
+        this.artists = Arrays.stream(song.getArtists().split(",")).toList();
         this.album = song.getAlbum();
         this.acousticness = song.getAcousticness();
         this.danceability = song.getDanceability();
@@ -250,5 +252,11 @@ public class SongDto implements Serializable {
         this.year = year;
     }
 
+    public List<CommentSubsetDto> getComments() {
+        return comments;
+    }
 
+    public void setComments(List<CommentSubsetDto> comments) {
+        this.comments = comments;
+    }
 }

@@ -74,7 +74,7 @@ public class FXMLRecommendedSongsDocumentController implements Initializable{
                                     btn.setStyle("-fx-background-color: #CCE5FF");
                                     btn.setOnAction(event -> {
                                         SongBean song = getTableView().getItems().get(getIndex());
-                                        likeSong(song.getId());
+                                        likeSong(new Song(song));
                                         System.out.println("User liked a song");
                                         btn.setDisable(true);
                                     });
@@ -106,8 +106,9 @@ public class FXMLRecommendedSongsDocumentController implements Initializable{
                                     btn.setStyle("-fx-background-color: #CCE5FF");
                                     btn.setOnAction(event -> {
                                         SongBean song = getTableView().getItems().get(getIndex());
-                                        unlikeSong(song.getId());
+                                        unlikeSong(new Song(song));
                                         System.out.println("User unliked a song");
+                                        btn.setDisable(true);
                                     });
                                     Image img = new Image("https://cdn-icons-png.flaticon.com/512/15/15107.png");
                                     ImageView view = new ImageView(img);

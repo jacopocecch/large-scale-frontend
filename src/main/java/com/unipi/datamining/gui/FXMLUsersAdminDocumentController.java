@@ -44,11 +44,13 @@ public class FXMLUsersAdminDocumentController implements Initializable{
     @FXML
     private void searchUser(ActionEvent event){
         String name = username.getText();
+        System.out.println("calling method");
         List<User> users = getUsersByUsername(name);
         updateTable(users);
     }
 
     private void updateTable(List<User> users) {
+        System.out.println(users != null);
         imageColumn.setCellValueFactory(new PropertyValueFactory<>("image"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         surnameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));

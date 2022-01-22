@@ -8,7 +8,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -78,42 +79,72 @@ public class API {
 
 
     public static List<User> getSimilarUsers(User user){
-        ResponseEntity<Neo4jUserDto[]> response;
+        ResponseEntity<InterfaceUserDto[]> response;
         try {
-            response = restTemplate.getForEntity(uri + "/users/similarities/" + user.getId(), Neo4jUserDto[].class);
+            response = restTemplate.getForEntity(uri + "/users/similarities/" + user.getId(), InterfaceUserDto[].class);
         } catch(Exception e){
             System.out.println(e.getMessage().split("\"")[10]);
             return null;
         }
         if(response.getBody() != null ) {
+            for(InterfaceUserDto neoUser: response.getBody())
+                System.out.println(neoUser.getImage());
             return Arrays.stream(response.getBody()).map(User::new).toList();
         } else return null;
     }
 
 
     public static List<Song> getRecommendedSongs(User user){
-        ResponseEntity<Neo4jSongDto[]> response;
+        ResponseEntity<InterfaceSongDto[]> response;
         try {
-            response = restTemplate.getForEntity(uri + "/songs/recommended/" + user.getId(), Neo4jSongDto[].class);
+            response = restTemplate.getForEntity(uri + "/songs/recommended/" + user.getId(), InterfaceSongDto[].class);
         } catch(Exception e){
             System.out.println(e.getMessage().split("\"")[10]);
             return null;
         }
+        for(InterfaceSongDto song: response.getBody())
+            System.out.println(song.getAlbum() + " " + song.getName());
         if(response.getBody() != null ) {
             return Arrays.stream(response.getBody()).map(Song::new).toList();
         } else return null;
     }
 
     public static List<User> getNearbyUsers(User user){
-        ResponseEntity<Neo4jUserDto[]> response;
+        ResponseEntity<InterfaceUserDto[]> response;
         try {
-            response = restTemplate.getForEntity(uri + "/users/similar_nearby/" + user.getId(), Neo4jUserDto[].class);
+            response = restTemplate.getForEntity(uri + "/users/similar_nearby/" + user.getId(), InterfaceUserDto[].class);
         } catch(Exception e){
             System.out.println(e.getMessage().split("\"")[10]);
             return null;
         }
         if(response.getBody() != null )
             return Arrays.stream(response.getBody()).map(User::new).toList();
+        else return null;
+    }
+
+    public static List<User> searchUserByUsername(String username){
+        ResponseEntity<InterfaceUserDto[]> response;
+        try {
+            response = restTemplate.getForEntity(uri + "/users/search/" + username, InterfaceUserDto[].class);
+        } catch(Exception e){
+            System.out.println(e.getMessage().split("\"")[10]);
+            return null;
+        }
+        if(response.getBody() != null )
+            return Arrays.stream(response.getBody()).map(User::new).toList();
+        else return null;
+    }
+
+    public static List<Song> searchSongByName(String name){
+        ResponseEntity<InterfaceSongDto[]> response;
+        try {
+            response = restTemplate.getForEntity(uri + "/songs/search/" + name, InterfaceSongDto[].class);
+        } catch(Exception e){
+            System.out.println(e.getMessage().split("\"")[10]);
+            return null;
+        }
+        if(response.getBody() != null )
+            return Arrays.stream(response.getBody()).map(Song::new).toList();
         else return null;
     }
 
@@ -143,10 +174,23 @@ public class API {
         else return null;
     }
 
-    public static List<User> getFriendRequests(User user){
-        ResponseEntity<Neo4jUserDto[]> response = null;
+    public static Song getSong(Song song){
+        ResponseEntity<SongDto> response;
         try {
-            response = restTemplate.getForEntity(uri + "/users/friend_requests/" + user.getId(), Neo4jUserDto[].class);
+            response = restTemplate.getForEntity(uri + "/songs/" + song.getId(), SongDto.class);
+        } catch(Exception e){
+            System.out.println(e.getMessage().split("\"")[10]);
+            return null;
+        }
+        if(response.getBody() != null )
+            return new Song(response.getBody());
+        else return null;
+    }
+
+    public static List<User> getFriendRequests(User user){
+        ResponseEntity<InterfaceUserDto[]> response = null;
+        try {
+            response = restTemplate.getForEntity(uri + "/users/friend_requests/" + user.getId(), InterfaceUserDto[].class);
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -157,9 +201,9 @@ public class API {
     }
 
     public static List<User> getFriendships(User user){
-        ResponseEntity<Neo4jUserDto[]> response = null;
+        ResponseEntity<InterfaceUserDto[]> response = null;
         try {
-            response = restTemplate.getForEntity(uri + "/users/friends/" + user.getId(), Neo4jUserDto[].class);
+            response = restTemplate.getForEntity(uri + "/users/friends/" + user.getId(), InterfaceUserDto[].class);
         } catch(Exception e){
             System.out.println(e.getMessage());
         }

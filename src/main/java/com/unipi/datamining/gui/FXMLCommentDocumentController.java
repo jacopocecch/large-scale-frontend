@@ -59,12 +59,25 @@ public class FXMLCommentDocumentController implements Initializable{
         // fai e ricarica pagina
     }
 
+    @FXML
+    private void showAllComments(ActionEvent event){
+        System.out.println("The user is requesting to show all comments of the song");
+        List<Comment> songComments = PersonalityClustering.showAllComments(new Song(FXMLSongInfoDocumentController.selectedSong));
+        ObservableList<CommentBean> commentBeans = FXCollections.observableArrayList();
+        if(songComments != null) {
+            for (Comment comment : songComments) {
+                commentBeans.add(new CommentBean(comment));
+            }
+        }
+        tableView.setItems(commentBeans);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         surnameColumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         textColumn.setCellValueFactory(new PropertyValueFactory<>("text"));
-        List<Comment> songComments = getComments(new Song(FXMLSongInfoDocumentController.selectedSong));
+        List<Comment> songComments = showComments(new Song(FXMLSongInfoDocumentController.selectedSong));
         ObservableList<CommentBean> commentBeans = FXCollections.observableArrayList();
         if(songComments != null) {
             for (Comment comment : songComments) {

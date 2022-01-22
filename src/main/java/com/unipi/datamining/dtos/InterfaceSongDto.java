@@ -2,20 +2,20 @@ package com.unipi.datamining.dtos;
 
 import java.io.Serializable;
 
-public class Neo4jSongDto implements Serializable {
+public class InterfaceSongDto implements Serializable {
 
     private String id;
     private String name;
-    private String authors;
+    private String artists;
     private String album;
 
-    public Neo4jSongDto() {
+    public InterfaceSongDto() {
     }
 
-    public Neo4jSongDto(String id, String name, String authors, String album) {
+    public InterfaceSongDto(String id, String name, String artists, String album) {
         this.id = id;
         this.name = name;
-        this.authors = authors;
+        this.artists = artists;
         this.album = album;
     }
 
@@ -35,12 +35,12 @@ public class Neo4jSongDto implements Serializable {
         this.name = name;
     }
 
-    public String getAuthors() {
-        return authors;
+    public String getArtists() {
+        return artists;
     }
 
-    public void setAuthors(String authors) {
-        this.authors = authors;
+    public void setArtists(String artists) {
+        this.artists = artists;
     }
 
     public String getAlbum() {

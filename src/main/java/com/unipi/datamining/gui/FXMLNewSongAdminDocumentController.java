@@ -117,6 +117,7 @@ public class FXMLNewSongAdminDocumentController implements Initializable{
         instrumentalness.setValue(0.5);
         liveness.setValue(0.5);
         valence.setValue(0.5);
+        image.setImage(new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png"));
     }
 
     @FXML
@@ -140,5 +141,6 @@ public class FXMLNewSongAdminDocumentController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        image.setImage(new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png"));
     }
 }

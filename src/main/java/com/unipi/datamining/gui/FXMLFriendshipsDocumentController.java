@@ -22,7 +22,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.unipi.datamining.PersonalityClustering.getComments;
 import static com.unipi.datamining.PersonalityClustering.getFriendships;
 
 

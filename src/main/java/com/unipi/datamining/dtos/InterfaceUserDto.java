@@ -2,20 +2,23 @@ package com.unipi.datamining.dtos;
 
 import java.io.Serializable;
 
-public class Neo4jUserDto implements Serializable {
+public class InterfaceUserDto implements Serializable {
 
     private String id;
-    private String fullName;
+    private String firstName;
+    private String lastName;
+    private int cluster;
     private String country;
     private String image;
     private FriendRequestDto friendRequest;
 
-    public Neo4jUserDto() {
+    public InterfaceUserDto() {
     }
 
-    public Neo4jUserDto(String id, String fullName, String image, String country, FriendRequestDto friendRequest){
+    public InterfaceUserDto(String id, String firstName, String lastName, String image, String country, FriendRequestDto friendRequest){
         this.id = id;
-        this.fullName = fullName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.image = image;
         this.country = country;
         this.friendRequest = friendRequest;
@@ -29,12 +32,20 @@ public class Neo4jUserDto implements Serializable {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getImage() {
@@ -59,5 +70,13 @@ public class Neo4jUserDto implements Serializable {
 
     public String getCountry() {
         return country;
+    }
+
+    public void setCluster(int cluster) {
+        this.cluster = cluster;
+    }
+
+    public int getCluster() {
+        return cluster;
     }
 }

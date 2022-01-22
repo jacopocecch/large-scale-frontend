@@ -1,22 +1,19 @@
 package com.unipi.datamining.entities;
 
+import com.unipi.datamining.beans.CommentBean;
 import com.unipi.datamining.beans.SongBean;
-import com.unipi.datamining.beans.UserBean;
-import com.unipi.datamining.dtos.Neo4jSongDto;
-import com.unipi.datamining.dtos.Neo4jUserDto;
+import com.unipi.datamining.dtos.CommentSubsetDto;
+import com.unipi.datamining.dtos.InterfaceSongDto;
 import com.unipi.datamining.dtos.SongDto;
-import com.unipi.datamining.dtos.UserDto;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Song {
     private String id;
     private String name;
     private String album;
-    private List<String> artists = new ArrayList<>();
+    private String artists;
     private int trackNumber;
     private int discNumber;
     private boolean explicit;
@@ -35,8 +32,9 @@ public class Song {
     private int timeSignature;
     private int year;
     private String image;
+    private List<Comment> comments;
 
-    public Song(String id, String name, String album, List<String> artists, String image){
+    public Song(String id, String name, String album, String artists, String image){
         this.id = id;
         this.name = name;
         this.album = album;
@@ -50,7 +48,7 @@ public class Song {
     public Song(String name, String album, String artists, int year, String image, double danceability, double energy, double loudness, double speechiness, double acousticness, double instrumentalness, double liveness, double valence){
         this.name = name;
         this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png";
-        this.artists = Arrays.stream(artists.split(",")).toList();
+        this.artists = artists;
         this.album = album;
         this.year = year;
         this.image = image;
@@ -67,7 +65,7 @@ public class Song {
     public Song(SongBean songBean){
         id = songBean.getId();
         name = songBean.getName();
-        artists = Arrays.stream(songBean.getArtists().split(",")).toList();
+        artists = songBean.getArtists();
         album = songBean.getAlbum();
         year = songBean.getYear();
         danceability = songBean.getDanceability();
@@ -78,21 +76,29 @@ public class Song {
         instrumentalness = songBean.getInstrumentalness();
         liveness = songBean.getLiveness();
         valence = songBean.getValence();
+        List<Comment> list = new ArrayList<>();
+        if(songBean.getComments() != null && songBean.getComments().size() != 0) {
+            System.out.println("size != 0");
+            for (CommentBean comment : songBean.getComments())
+                list.add(new Comment(comment));
+        }
+        comments = list;
     }
 
-    public Song(Neo4jSongDto song){
-        this.id = song.getId();
-        this.name = song.getName();
-        this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png";
-        this.artists = Arrays.stream(song.getAuthors().split(",")).toList();
-        this.album = song.getAlbum();
-    }
-
-    public Song(SongDto song){
+    public Song(InterfaceSongDto song){
         this.id = song.getId();
         this.name = song.getName();
         this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png";
         this.artists = song.getArtists();
+        // aggiusta
+        this.album = song.getAlbum();
+    }
+
+    public Song(SongDto song) {
+        this.id = song.getId();
+        this.name = song.getName();
+        this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png";
+        this.artists = song.getArtists().toString();
         this.album = song.getAlbum();
         this.acousticness = song.getAcousticness();
         this.danceability = song.getDanceability();
@@ -112,6 +118,14 @@ public class Song {
         this.duration = song.getDuration();
         this.timeSignature = song.getTimeSignature();
         this.year = song.getYear();
+        List<Comment> list = new ArrayList<>();
+        if (song.getComments() != null){
+            for (CommentSubsetDto comment : song.getComments()) {
+                System.out.println(comment.getText());
+                list.add(new Comment(comment));
+            }
+        }
+        this.comments = list;
     }
 
     public String getId() {
@@ -138,11 +152,11 @@ public class Song {
         return name;
     }
 
-    public List<String> getArtists() {
+    public String getArtists() {
         return artists;
     }
 
-    public void setArtists(List<String> artists) {
+    public void setArtists(String artists) {
         this.artists = artists;
     }
 
@@ -292,6 +306,14 @@ public class Song {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
     }
 }
 

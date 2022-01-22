@@ -1,11 +1,14 @@
 package com.unipi.datamining.beans;
 
+import com.unipi.datamining.entities.Comment;
 import com.unipi.datamining.entities.Song;
 import com.unipi.datamining.entities.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.ImageView;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class SongBean {
@@ -23,6 +26,7 @@ public class SongBean {
     private double liveness;
     private double valence;
     private ImageView image;
+    private List<CommentBean> comments;
 
 
     public SongBean(Song song){
@@ -42,6 +46,14 @@ public class SongBean {
         instrumentalness = song.getInstrumentalness();
         liveness = song.getLiveness();
         valence = song.getValence();
+        List<CommentBean> list = new ArrayList<>();
+        System.out.println("Creating the song bean");
+        if(song.getComments() != null && song.getComments().size() != 0) {
+            System.out.println("size != 0");
+            for (Comment comment : song.getComments())
+                list.add(new CommentBean(comment));
+        }
+        comments = list;
     }
 
     public void setId(String id) {
@@ -154,6 +166,14 @@ public class SongBean {
 
     public double getDanceability() {
         return danceability;
+    }
+
+    public void setComments(List<CommentBean> comments) {
+        this.comments = comments;
+    }
+
+    public List<CommentBean> getComments() {
+        return comments;
     }
 }
 

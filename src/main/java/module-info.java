@@ -22,13 +22,13 @@ module com.unipi.datamining {
     requires spring.jcl;
 
 
-    opens com.unipi.datamining.beans to javafx.base;
-    opens com.unipi.datamining.gui to javafx.fxml;
-    exports com.unipi.datamining.gui to javafx.graphics, javafx.fxml;
-    exports com.unipi.datamining.util to xstream;
-    exports com.unipi.datamining.beans;
-    exports com.unipi.datamining.entities;
-    opens com.unipi.datamining to javafx.fxml;
-    exports com.unipi.datamining to javafx.fxml, javafx.graphics;
-    exports com.unipi.datamining.dtos to com.fasterxml.jackson.databind;
+    opens com.unipi.largescale.beans to javafx.base;
+    opens com.unipi.largescale.gui to javafx.fxml;
+    exports com.unipi.largescale.gui to javafx.graphics, javafx.fxml;
+    exports com.unipi.largescale.util to xstream;
+    exports com.unipi.largescale.beans;
+    exports com.unipi.largescale.entities;
+    opens com.unipi.largescale to javafx.fxml;
+    exports com.unipi.largescale to javafx.fxml, javafx.graphics;
+    exports com.unipi.largescale.dtos to com.fasterxml.jackson.databind;
 }

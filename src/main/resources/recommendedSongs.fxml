@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="423.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unipi.datamining.gui.FXMLRecommendedSongsDocumentController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="423.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unipi.largescale.gui.FXMLRecommendedSongsDocumentController">
    <children>
       <Label fx:id="recommendedSongs" layoutX="137.0" layoutY="30.0" text="Recommended Songs">
          <font>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #99CCFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unipi.datamining.gui.FXMLLoginDocumentController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #99CCFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unipi.largescale.gui.FXMLLoginDocumentController">
    <children>
       <ImageView fitHeight="394.0" fitWidth="528.0" layoutX="35.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>

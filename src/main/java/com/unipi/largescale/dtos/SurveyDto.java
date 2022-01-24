@@ -1,112 +1,70 @@
 package com.unipi.largescale.dtos;
+public class SurveyDto {
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.unipi.largescale.entities.Question;
-import com.unipi.largescale.entities.Survey;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-
-public class SurveyDto implements Serializable {
-    @JsonProperty(value="EXT")
-    private ArrayList<QuestionDto> ext;
-    @JsonProperty(value="EST")
-    private ArrayList<QuestionDto> est;
-    @JsonProperty(value="AGR")
-    private ArrayList<QuestionDto> agr;
-    @JsonProperty(value="CSN")
-    private ArrayList<QuestionDto> csn;
-    @JsonProperty(value="OPN")
-    private ArrayList<QuestionDto> opn;
+    private double extraversion;
+    private double agreeableness;
+    private double conscientiousness;
+    private double neuroticism;
+    private double openness;
+    private double timeSpent;
 
     public SurveyDto() {
     }
 
-    public SurveyDto(ArrayList<QuestionDto> ext, ArrayList<QuestionDto> est, ArrayList<QuestionDto> agr, ArrayList<QuestionDto> csn, ArrayList<QuestionDto> opn) {
-        this.ext = ext;
-        this.est = est;
-        this.agr = agr;
-        this.csn = csn;
-        this.opn = opn;
+    public SurveyDto(double extraversion, double agreeableness, double conscientiousness, double neuroticism, double openness, double timeSpent) {
+        this.extraversion = extraversion;
+        this.agreeableness = agreeableness;
+        this.conscientiousness = conscientiousness;
+        this.neuroticism = neuroticism;
+        this.openness = openness;
+        this.timeSpent = timeSpent;
     }
 
-    public SurveyDto(Survey survey){
-        ext = new ArrayList<>();
-        QuestionDto questionDto;
-        for(Question question: survey.getExt()){
-            questionDto = new QuestionDto(question);
-            ext.add(questionDto);
-        }
-        est = new ArrayList<>();
-        for(Question question: survey.getEst()){
-            questionDto = new QuestionDto(question);
-            est.add(questionDto);
-        }
-        agr = new ArrayList<>();
-        for(Question question: survey.getAgr()){
-            questionDto = new QuestionDto(question);
-            agr.add(questionDto);
-        }
-        opn = new ArrayList<>();
-        for(Question question: survey.getOpn()){
-            questionDto = new QuestionDto(question);
-            opn.add(questionDto);
-        }
-        csn = new ArrayList<>();
-        for(Question question: survey.getCsn()){
-            questionDto = new QuestionDto(question);
-            csn.add(questionDto);
-        }
+    public double getExtraversion() {
+        return extraversion;
     }
 
-    public ArrayList<QuestionDto> getExt() {
-        return ext;
+    public void setExtraversion(double extraversion) {
+        this.extraversion = extraversion;
     }
 
-    public void setExt(ArrayList<QuestionDto> ext) {
-        this.ext = ext;
+    public double getAgreeableness() {
+        return agreeableness;
     }
 
-    public ArrayList<QuestionDto> getEst() {
-        return est;
+    public void setAgreeableness(double agreeableness) {
+        this.agreeableness = agreeableness;
     }
 
-    public void setEst(ArrayList<QuestionDto> est) {
-        this.est = est;
+    public double getConscientiousness() {
+        return conscientiousness;
     }
 
-    public ArrayList<QuestionDto> getAgr() {
-        return agr;
+    public void setConscientiousness(double conscientiousness) {
+        this.conscientiousness = conscientiousness;
     }
 
-    public void setAgr(ArrayList<QuestionDto> agr) {
-        this.agr = agr;
+    public double getNeuroticism() {
+        return neuroticism;
     }
 
-    public ArrayList<QuestionDto> getCsn() {
-        return csn;
+    public void setNeuroticism(double neuroticism) {
+        this.neuroticism = neuroticism;
     }
 
-    public void setCsn(ArrayList<QuestionDto> csn) {
-        this.csn = csn;
+    public double getOpenness() {
+        return openness;
     }
 
-    public ArrayList<QuestionDto> getOpn() {
-        return opn;
+    public void setOpenness(double openness) {
+        this.openness = openness;
     }
 
-    public void setOpn(ArrayList<QuestionDto> opn) {
-        this.opn = opn;
+    public double getTimeSpent() {
+        return timeSpent;
     }
 
-    @Override
-    public String toString() {
-        return "SurveyDto{" +
-                "ext=" + ext +
-                ", est=" + est +
-                ", agr=" + agr +
-                ", csn=" + csn +
-                ", opn=" + opn +
-                '}';
+    public void setTimeSpent(double timeSpent) {
+        this.timeSpent = timeSpent;
     }
 }

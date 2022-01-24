@@ -95,6 +95,21 @@ public class FXMLHomeDocumentController implements Initializable{
     }
 
     @FXML
+    private void searchSong(ActionEvent event){
+        System.out.println("Showing the stats to the admin");
+        LoaderFXML object = new LoaderFXML();
+        Pane homePane = object.getPage("searchSongs");
+        try {
+            if(layoutPane != null)
+                layoutPane.getChildren().clear();
+            assert layoutPane != null;
+            layoutPane.getChildren().add(homePane);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void showSongsAdminPage(ActionEvent event){
         System.out.println("Showing the users of the admin");
         LoaderFXML object = new LoaderFXML();

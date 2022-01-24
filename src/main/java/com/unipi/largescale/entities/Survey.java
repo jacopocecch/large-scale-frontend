@@ -1,91 +1,82 @@
 package com.unipi.largescale.entities;
 
-import com.unipi.largescale.dtos.QuestionDto;
 import com.unipi.largescale.dtos.SurveyDto;
-import java.util.ArrayList;
 
 public class Survey {
 
-    private ArrayList<Question> ext;
-    private ArrayList<Question> est;
-    private ArrayList<Question> agr;
-    private ArrayList<Question> csn;
-    private ArrayList<Question> opn;
+    private double extraversion;
+    private double agreeableness;
+    private double conscientiousness;
+    private double neuroticism;
+    private double openness;
+    private double timeSpent;
 
-    public Survey(ArrayList<Question> ext, ArrayList<Question> est, ArrayList<Question> agr, ArrayList<Question> csn, ArrayList<Question> opn) {
-        this.ext = ext;
-        this.est = est;
-        this.agr = agr;
-        this.csn = csn;
-        this.opn = opn;
+    public Survey() {
     }
 
-    public Survey(SurveyDto survey){
-        ext = new ArrayList<>();
-        Question questionDto;
-        for(QuestionDto question: survey.getExt()){
-            questionDto = new Question(question);
-            ext.add(questionDto);
-        }
-        est = new ArrayList<>();
-        for(QuestionDto question: survey.getEst()){
-            questionDto = new Question(question);
-            est.add(questionDto);
-        }
-        agr = new ArrayList<>();
-        for(QuestionDto question: survey.getAgr()){
-            questionDto = new Question(question);
-            agr.add(questionDto);
-        }
-        opn = new ArrayList<>();
-        for(QuestionDto question: survey.getOpn()){
-            questionDto = new Question(question);
-            opn.add(questionDto);
-        }
-        csn = new ArrayList<>();
-        for(QuestionDto question: survey.getCsn()){
-            questionDto = new Question(question);
-            csn.add(questionDto);
-        }
+    public Survey(double extraversion, double agreeableness, double conscientiousness, double neuroticism, double openness, double timeSpent) {
+        this.extraversion = extraversion;
+        this.agreeableness = agreeableness;
+        this.conscientiousness = conscientiousness;
+        this.neuroticism = neuroticism;
+        this.openness = openness;
+        this.timeSpent = timeSpent;
     }
 
-    public ArrayList<Question> getExt() {
-        return ext;
+    public Survey(SurveyDto survey) {
+        this.extraversion = survey.getExtraversion();
+        this.agreeableness = survey.getAgreeableness();
+        this.conscientiousness = survey.getConscientiousness();
+        this.neuroticism = survey.getNeuroticism();
+        this.openness = survey.getOpenness();
+        this.timeSpent = survey.getTimeSpent();
     }
 
-    public void setExt(ArrayList<Question> ext) {
-        this.ext = ext;
+    public double getExtraversion() {
+        return extraversion;
     }
 
-    public ArrayList<Question> getEst() {
-        return est;
+    public void setExtraversion(double extraversion) {
+        this.extraversion = extraversion;
     }
 
-    public void setEst(ArrayList<Question> est) {
-        this.est = est;
+    public double getAgreeableness() {
+        return agreeableness;
     }
 
-    public ArrayList<Question> getAgr() {
-        return agr;
+    public void setAgreeableness(double agreeableness) {
+        this.agreeableness = agreeableness;
     }
 
-    public void setAgr(ArrayList<Question> agr) {
-        this.agr = agr;
+    public double getConscientiousness() {
+        return conscientiousness;
     }
 
-    public ArrayList<Question> getCsn() {
-        return csn;
+    public void setConscientiousness(double conscientiousness) {
+        this.conscientiousness = conscientiousness;
     }
 
-    public void setCsn(ArrayList<Question> csn) {
-        this.csn = csn;
+    public double getNeuroticism() {
+        return neuroticism;
     }
 
-    public ArrayList<Question> getOpn() {
-        return opn;
+    public void setNeuroticism(double neuroticism) {
+        this.neuroticism = neuroticism;
     }
 
-    public void setOpn(ArrayList<Question> opn) {
-        this.opn = opn;
+    public double getOpenness() {
+        return openness;
+    }
+
+    public void setOpenness(double openness) {
+        this.openness = openness;
+    }
+
+    public double getTimeSpent() {
+        return timeSpent;
+    }
+
+    public void setTimeSpent(double timeSpent) {
+        this.timeSpent = timeSpent;
     }
 }

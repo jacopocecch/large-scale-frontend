@@ -41,7 +41,7 @@ public class FXMLSettingsDocumentController implements Initializable{
     @FXML
     private PasswordField password;
     @FXML
-    private DatePicker dateOfBirth;
+    private TextField dateOfBirth;
     @FXML
     private ChoiceBox<String> gender;
     @FXML
@@ -109,12 +109,6 @@ public class FXMLSettingsDocumentController implements Initializable{
             gender.setStyle("-fx-border-color: #FF0000;-fx-background-color: #CCE5FF;");
             return;
         }
-        if(dateOfBirth.getValue() != null)
-            newDateOfBirth = dateOfBirth.getValue();
-        if(newDateOfBirth == null || !validDate(newDateOfBirth)){
-            dateOfBirth.setStyle("-fx-border-color: #FF0000;");
-            return;
-        }
         if(newCountry == null) {
             country.setStyle("-fx-border-color: #FF0000;-fx-background-color: #CCE5FF;");
             return;
@@ -140,7 +134,7 @@ public class FXMLSettingsDocumentController implements Initializable{
             gender.getItems().add("Not Specified");
             gender.setValue(user.getGender());
             image.setImage(new Image(user.getImage()));
-            dateOfBirth.setValue(user.getDateOfBirth());
+            dateOfBirth.setText(user.getDateOfBirth().toString());
         }
     }
 
@@ -159,6 +153,7 @@ public class FXMLSettingsDocumentController implements Initializable{
         gender.setValue(user.getGender());
         dateOfBirth.setEditable(false);
         image.setImage(new Image(user.getImage()));
-        dateOfBirth.setValue(user.getDateOfBirth());
+        dateOfBirth.setText(user.getDateOfBirth().toString());
+        dateOfBirth.setEditable(false);
     }
 }

@@ -2,6 +2,7 @@ package com.unipi.largescale;
 import com.unipi.largescale.API.API;
 import com.unipi.largescale.entities.*;
 import com.unipi.largescale.entities.aggregations.Album;
+import com.unipi.largescale.entities.aggregations.AverageMusicFeatures;
 import com.unipi.largescale.entities.aggregations.Country;
 import com.unipi.largescale.entities.aggregations.Id;
 import com.unipi.largescale.util.*;
@@ -135,9 +136,9 @@ public class PersonalityClustering extends Application {
         return API.commentSong(song, new Comment(user.getId(), song.getId(), user.getFirstName(),user.getLastName(), text));
     }
 
-    public static double[] getAverageClusterMusicValues(){
-        // to do
-        return new double[]{1,2,3,4,5,6};
+    public static AverageMusicFeatures getAverageClusterMusicValues(){
+        List<AverageMusicFeatures> list = API.getAverageMusicFeaturesByCluster();
+        return list.get(user.getCluster());
     }
 
     public static int getClusterHighestVariance(){
@@ -184,21 +185,21 @@ public class PersonalityClustering extends Application {
     }
 
     public static double[] getClusterPersonalityValues(){
-        ClusterValues clusterValues = API.getClusterValues(user.getCluster());
+        Survey clusterValues = API.getClusterValues(user.getCluster());
         if(clusterValues != null)
             return new double[]{clusterValues.getOpenness(),clusterValues.getAgreeableness(),clusterValues.getNeuroticism(),clusterValues.getExtraversion(),clusterValues.getConscientiousness(),clusterValues.getTimeSpent()};
         else return null;
     }
 
     public static double[] getClusterPersonalityValues(int cluster){
-        ClusterValues clusterValues = API.getClusterValues(cluster);
+        Survey clusterValues = API.getClusterValues(cluster);
         if(clusterValues != null)
             return new double[]{clusterValues.getOpenness(),clusterValues.getAgreeableness(),clusterValues.getNeuroticism(),clusterValues.getExtraversion(),clusterValues.getConscientiousness(),clusterValues.getTimeSpent()};
         else return null;
     }
 
     public static String getDeviation(){
-        ClusterValues clusterValues= API.getClusterValues(user.getCluster());
+        Survey clusterValues= API.getClusterValues(user.getCluster());
         if(clusterValues != null) {
             double diffC = Math.abs(user.getConscientiousness() - clusterValues.getConscientiousness());
             double diffN = Math.abs(user.getNeuroticism() - clusterValues.getNeuroticism());

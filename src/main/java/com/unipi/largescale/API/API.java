@@ -2,6 +2,7 @@ package com.unipi.largescale.API;
 import com.unipi.largescale.dtos.*;
 import com.unipi.largescale.entities.*;
 import com.unipi.largescale.entities.aggregations.Album;
+import com.unipi.largescale.entities.aggregations.AverageMusicFeatures;
 import com.unipi.largescale.entities.aggregations.Country;
 import com.unipi.largescale.entities.aggregations.Id;
 import com.unipi.largescale.util.ConfigurationParameters;
@@ -153,21 +154,23 @@ public class API {
             System.out.println(e.getMessage().split("\"")[10]);
             return null;
         }
+        for(InterfaceSongDto in: response.getBody())
+            System.out.println(in.getArtists());
         if(response.getBody() != null )
             return Arrays.stream(response.getBody()).map(Song::new).toList();
         else return null;
     }
 
-    public static ClusterValues getClusterValues(int id){
-        ResponseEntity<ClusterValuesDto> response;
+    public static Survey getClusterValues(int id){
+        ResponseEntity<SurveyDto> response;
         try {
-            response = restTemplate.getForEntity(uri + "/users/cluster_cluster_values/" + id, ClusterValuesDto.class);
+            response = restTemplate.getForEntity(uri + "/users/cluster_cluster_values/" + id, SurveyDto.class);
         } catch(Exception e){
             System.out.println(e.getMessage().split("\"")[10]);
             return null;
         }
         if(response.getBody() != null )
-            return new ClusterValues(response.getBody());
+            return new Survey(response.getBody());
         else return null;
     }
 
@@ -338,6 +341,19 @@ public class API {
         ResponseEntity<Country[]> response;
         try {
             response = restTemplate.getForEntity(uri + "/users/top_countries/?k=" + k, Country[].class);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        if(response.getBody() != null ) {
+            return Arrays.stream(response.getBody()).toList();
+        } else return null;
+    }
+
+    public static List<AverageMusicFeatures> getAverageMusicFeaturesByCluster(){
+        ResponseEntity<AverageMusicFeatures[]> response;
+        try {
+            response = restTemplate.getForEntity(uri + "/songs/average_music_features", AverageMusicFeatures[].class);
         } catch(Exception e){
             System.out.println(e.getMessage());
             return null;

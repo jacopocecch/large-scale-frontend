@@ -34,6 +34,7 @@ public class SongBean {
         name = new SimpleStringProperty(song.getName());
         album = new SimpleStringProperty(song.getAlbum());
         artists = new SimpleStringProperty(String.join(",", song.getArtists()));
+        System.out.println(artists);
         image = new ImageView(song.getImage());
         image.setFitHeight(30);
         image.setFitWidth(30);

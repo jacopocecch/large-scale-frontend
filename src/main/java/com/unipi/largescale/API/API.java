@@ -154,8 +154,10 @@ public class API {
             System.out.println(e.getMessage().split("\"")[10]);
             return null;
         }
-        for(InterfaceSongDto in: response.getBody())
+        for(InterfaceSongDto in: response.getBody()) {
+            in.setArtists(in.getArtists().substring(1, in.getArtists().length() - 1));
             System.out.println(in.getArtists());
+        }
         if(response.getBody() != null )
             return Arrays.stream(response.getBody()).map(Song::new).toList();
         else return null;

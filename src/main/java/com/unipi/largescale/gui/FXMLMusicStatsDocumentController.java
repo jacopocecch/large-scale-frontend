@@ -11,7 +11,11 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import static com.unipi.largescale.PersonalityClustering.*;
+
+import static com.unipi.largescale.service.SongService.*;
+import static com.unipi.largescale.service.UserService.*;
+
+
 
 public class FXMLMusicStatsDocumentController implements Initializable{
     @FXML
@@ -24,7 +28,7 @@ public class FXMLMusicStatsDocumentController implements Initializable{
         musicBarChart.setStyle("-fx-bar-fill: blue;");
         XYChart.Series<String, Number> values = new XYChart.Series<>();
         List<Album> albums = getClusterKHighestRatedAlbums();
-        String text = "Most preferred album inside your cluster:\n";
+        String text = "";
         for(int i = 0; i < albums.size();++i) {
             text += albums.get(0).getId() + "\n";
         }

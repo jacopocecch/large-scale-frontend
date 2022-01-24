@@ -19,8 +19,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.unipi.largescale.PersonalityClustering.*;
-import static com.unipi.largescale.PersonalityClustering.unlikeSong;
+import static com.unipi.largescale.service.SongService.*;
 
 
 public class FXMLSearchSongsDocumentController implements Initializable{

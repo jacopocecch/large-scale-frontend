@@ -7,7 +7,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
-import static com.unipi.largescale.PersonalityClustering.*;
+import static com.unipi.largescale.service.UserService.*;
+
 
 public class FXMLHomeDocumentController implements Initializable{
     private boolean initialized;

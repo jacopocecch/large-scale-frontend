@@ -20,9 +20,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import static com.unipi.largescale.PersonalityClustering.*;
-import static com.unipi.largescale.PersonalityClustering.user;
-import static com.unipi.largescale.gui.ValidationForm.validDate;
+import static com.unipi.largescale.service.UserService.*;
 import static com.unipi.largescale.gui.ValidationForm.validEmailAddress;
 import static com.unipi.largescale.util.UtilGUI.readListOfCountries;
 

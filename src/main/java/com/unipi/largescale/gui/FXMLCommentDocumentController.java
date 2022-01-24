@@ -4,6 +4,7 @@ import com.unipi.largescale.PersonalityClustering;
 import com.unipi.largescale.beans.CommentBean;
 import com.unipi.largescale.entities.Comment;
 import com.unipi.largescale.entities.Song;
+import com.unipi.largescale.service.SongService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,8 +21,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.unipi.largescale.PersonalityClustering.*;
-
+import static com.unipi.largescale.service.SongService.*;
 
 public class FXMLCommentDocumentController implements Initializable{
     @FXML
@@ -54,7 +54,7 @@ public class FXMLCommentDocumentController implements Initializable{
     private void commentSong(ActionEvent event){
         System.out.println("Commenting the song");
         String comment = newComment.getText();
-        Comment userComment = PersonalityClustering.commentSong(comment, new Song(FXMLSongInfoDocumentController.selectedSong));
+        Comment userComment = SongService.commentSong(comment, new Song(FXMLSongInfoDocumentController.selectedSong));
         newComment.setText("");
         List<Comment> songComments = showComments(new Song(FXMLSongInfoDocumentController.selectedSong));
         ObservableList<CommentBean> commentBeans = FXCollections.observableArrayList();
@@ -71,7 +71,7 @@ public class FXMLCommentDocumentController implements Initializable{
     @FXML
     private void showAllComments(ActionEvent event){
         System.out.println("The user is requesting to show all comments of the song");
-        List<Comment> songComments = PersonalityClustering.showAllComments(new Song(FXMLSongInfoDocumentController.selectedSong));
+        List<Comment> songComments = SongService.showAllComments(new Song(FXMLSongInfoDocumentController.selectedSong));
         ObservableList<CommentBean> commentBeans = FXCollections.observableArrayList();
         if(songComments != null) {
             for (Comment comment : songComments) {

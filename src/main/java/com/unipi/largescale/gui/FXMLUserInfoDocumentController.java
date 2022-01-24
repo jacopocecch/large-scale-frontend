@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.unipi.largescale.PersonalityClustering.*;
+import static com.unipi.largescale.service.UserService.*;
 
 
 public class FXMLUserInfoDocumentController implements Initializable{

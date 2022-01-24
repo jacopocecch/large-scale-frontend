@@ -22,7 +22,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
 import static com.unipi.largescale.gui.ValidationForm.*;
-import static com.unipi.largescale.PersonalityClustering.*;
+import static com.unipi.largescale.service.UserService.*;
 import static com.unipi.largescale.util.UtilGUI.*;
 
 public class FXMLRegisterDocumentController implements Initializable{

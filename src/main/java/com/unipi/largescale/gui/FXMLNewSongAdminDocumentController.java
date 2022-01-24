@@ -20,7 +20,8 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import static com.unipi.largescale.PersonalityClustering.addNewSong;
+import static com.unipi.largescale.service.SongService.*;
+
 import static com.unipi.largescale.gui.ValidationForm.validYear;
 
 

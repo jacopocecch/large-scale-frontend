@@ -16,7 +16,9 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.unipi.largescale.PersonalityClustering.getMoreInformationSong;
+import static com.unipi.largescale.service.SongService.*;
+
+
 
 
 public class FXMLSongInfoDocumentController implements Initializable{

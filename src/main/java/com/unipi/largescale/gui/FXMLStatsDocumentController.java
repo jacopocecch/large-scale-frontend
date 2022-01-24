@@ -12,8 +12,7 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.unipi.largescale.PersonalityClustering.*;
-import static com.unipi.largescale.PersonalityClustering.user;
+import static com.unipi.largescale.service.UserService.*;
 import static com.unipi.largescale.util.UtilGUI.getPersonalityDescription;
 
 public class FXMLStatsDocumentController implements Initializable{

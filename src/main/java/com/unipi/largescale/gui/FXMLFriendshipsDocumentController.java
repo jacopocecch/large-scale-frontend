@@ -18,7 +18,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.unipi.largescale.PersonalityClustering.getFriendships;
+import static com.unipi.largescale.service.UserService.*;
+
 
 
 public class FXMLFriendshipsDocumentController implements Initializable{

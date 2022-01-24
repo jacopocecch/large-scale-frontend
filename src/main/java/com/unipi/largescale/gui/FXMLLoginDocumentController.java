@@ -10,8 +10,8 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 import static com.unipi.largescale.gui.ValidationForm.*;
-import static com.unipi.largescale.PersonalityClustering.*;
 
+import static com.unipi.largescale.service.UserService.*;
 
 public class FXMLLoginDocumentController implements Initializable{
     @FXML
@@ -49,7 +49,7 @@ public class FXMLLoginDocumentController implements Initializable{
         System.out.println("User logged in succesfully!");
         LoaderFXML object = new LoaderFXML();
         Pane layout;
-        FXMLHomeDocumentController.admin = PersonalityClustering.user.getAdmin();
+        FXMLHomeDocumentController.admin = user.getAdmin();
         if(FXMLHomeDocumentController.admin)
             layout = object.getPage("layoutAdmin");
         else layout = object.getPage("layout");

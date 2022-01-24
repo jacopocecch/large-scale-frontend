@@ -35,6 +35,6 @@
       <Button layoutX="309.0" layoutY="207.0" mnemonicParsing="false" onAction="#uploadPic" style="-fx-background-color: #CCE5FF;" text="Upload picture" />
       <Button fx:id="saveSettings" layoutX="166.0" layoutY="360.0" mnemonicParsing="false" onAction="#saveSettings" style="-fx-background-color: #CCE5FF;" text="Save Settings" />
       <ImageView fx:id="image" fitHeight="97.0" fitWidth="92.0" layoutX="311.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" />
-      <PasswordField fx:id="dateOfBirth" layoutX="130.0" layoutY="285.0" />
+      <TextField fx:id="dateOfBirth" layoutX="130.0" layoutY="287.0" />
    </children>
 </AnchorPane>

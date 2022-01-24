@@ -15,7 +15,7 @@
             <Font name="System Bold" size="16.0" />
          </font></Label>
       <Text layoutX="113.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Cluster's Average Music Values" wrappingWidth="204.0" />
-      <BarChart fx:id="musicBarChart" layoutX="99.0" layoutY="95.0" legendVisible="false" prefHeight="210.0" prefWidth="233.0" style="-fx-bar-fill: #99CCFF;" stylesheets="@style.css">
+      <BarChart fx:id="musicBarChart" layoutX="98.0" layoutY="95.0" legendVisible="false" prefHeight="210.0" prefWidth="233.0" style="-fx-bar-fill: #99CCFF;" stylesheets="@style.css">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -23,6 +23,7 @@
           <NumberAxis fx:id="levelAxis" minorTickCount="3" side="LEFT" upperBound="5.0" />
         </yAxis>
       </BarChart>
-      <Label fx:id="topAlbums" layoutY="321.0" prefHeight="46.0" prefWidth="424.0" style="-fx-alignment: CENTER;" />
+      <Label layoutX="4.0" layoutY="305.0" prefHeight="20.0" prefWidth="424.0" style="-fx-alignment: CENTER;" text="Most preferred album inside your cluster:" />
+      <Label fx:id="topAlbums" layoutX="3.0" layoutY="325.0" prefHeight="20.0" prefWidth="424.0" style="-fx-alignment: CENTER;" />
    </children>
 </AnchorPane>

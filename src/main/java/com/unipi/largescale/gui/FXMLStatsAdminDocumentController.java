@@ -24,7 +24,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Spliterator;
 
-import static com.unipi.largescale.PersonalityClustering.*;
+import static com.unipi.largescale.service.AdminService.*;
+import static com.unipi.largescale.service.UserService.*;
+
+
 
 
 public class FXMLStatsAdminDocumentController implements Initializable{

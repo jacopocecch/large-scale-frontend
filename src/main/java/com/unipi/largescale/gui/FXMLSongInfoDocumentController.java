@@ -16,7 +16,6 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.unipi.largescale.PersonalityClustering.getMainCluster;
 import static com.unipi.largescale.PersonalityClustering.getMoreInformationSong;
 
 
@@ -35,6 +34,10 @@ public class FXMLSongInfoDocumentController implements Initializable{
     private BarChart featureBarChart;
     @FXML
     private Label mainCluster;
+    @FXML
+    private Label numLikes;
+    @FXML
+    private Label numUnlikes;
     @FXML
     private ImageView image;
     public static SongBean selectedSong;
@@ -73,7 +76,9 @@ public class FXMLSongInfoDocumentController implements Initializable{
         values.getData().add(new XYChart.Data<>("Instrumentalness", selectedSong.getInstrumentalness()));
         values.getData().add(new XYChart.Data<>("Liveness", selectedSong.getLiveness()));
         values.getData().add(new XYChart.Data<>("Valence", selectedSong.getValence()));
+        numLikes.setText(String.valueOf(selectedSong.getNumLikes()));
+        numUnlikes.setText(String.valueOf(selectedSong.getNumUnlikes()));
         featureBarChart.getData().addAll(values);
-        mainCluster.setText(getMainCluster(new Song(selectedSong)));
+        mainCluster.setText(String.valueOf(selectedSong.getCluster()));
     }
 }

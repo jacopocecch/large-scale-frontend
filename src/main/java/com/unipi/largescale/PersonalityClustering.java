@@ -1,14 +1,20 @@
 package com.unipi.largescale;
 import com.unipi.largescale.API.API;
 import com.unipi.largescale.entities.*;
+import com.unipi.largescale.entities.aggregations.Album;
+import com.unipi.largescale.entities.aggregations.Country;
+import com.unipi.largescale.entities.aggregations.Id;
 import com.unipi.largescale.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.springframework.http.ResponseEntity;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import static com.unipi.largescale.API.API.*;
@@ -134,9 +140,23 @@ public class PersonalityClustering extends Application {
         return new double[]{1,2,3,4,5,6};
     }
 
-    public static String getMainCluster(Song selectedSong){
-        // to do
-        return "1";
+    public static int getClusterHighestVariance(){
+        return API.getClusterHighestVariance();
+    }
+
+    public static int getMostDanceableCluster(){
+        return API.getMostDanceableCluster().getId();
+    }
+
+
+    public static List<Album> getClusterKHighestRatedAlbums(){
+        List<Album> list = API.getClusterKHighestRatedAlbums(user.getCluster(), 1);
+        System.out.println(list.size());
+        return list;
+    }
+
+    public static List<Country> getTopKCountries(){
+        return API.getTopKCountries(3);
     }
 
 
@@ -164,14 +184,21 @@ public class PersonalityClustering extends Application {
     }
 
     public static double[] getClusterPersonalityValues(){
-        ClusterValues clusterValues = API.getClusterValues(user);
+        ClusterValues clusterValues = API.getClusterValues(user.getCluster());
+        if(clusterValues != null)
+            return new double[]{clusterValues.getOpenness(),clusterValues.getAgreeableness(),clusterValues.getNeuroticism(),clusterValues.getExtraversion(),clusterValues.getConscientiousness(),clusterValues.getTimeSpent()};
+        else return null;
+    }
+
+    public static double[] getClusterPersonalityValues(int cluster){
+        ClusterValues clusterValues = API.getClusterValues(cluster);
         if(clusterValues != null)
             return new double[]{clusterValues.getOpenness(),clusterValues.getAgreeableness(),clusterValues.getNeuroticism(),clusterValues.getExtraversion(),clusterValues.getConscientiousness(),clusterValues.getTimeSpent()};
         else return null;
     }
 
     public static String getDeviation(){
-        ClusterValues clusterValues= API.getClusterValues(user);
+        ClusterValues clusterValues= API.getClusterValues(user.getCluster());
         if(clusterValues != null) {
             double diffC = Math.abs(user.getConscientiousness() - clusterValues.getConscientiousness());
             double diffN = Math.abs(user.getNeuroticism() - clusterValues.getNeuroticism());
@@ -224,8 +251,6 @@ public class PersonalityClustering extends Application {
     public static List<User> getUsersByUsername(String username){
         return API.searchUserByUsername(username);
     }
-
-
 
     public static void deleteSong(Song song){
         API.deleteSong(song);

@@ -30,6 +30,8 @@ public class SongDto implements Serializable {
     private int timeSignature;
     private int year;
     private List<CommentSubsetDto> comments;
+    private int cluster;
+    private List<LikeDto> likes;
 
     public SongDto() {
     }
@@ -257,5 +259,21 @@ public class SongDto implements Serializable {
 
     public void setComments(List<CommentSubsetDto> comments) {
         this.comments = comments;
+    }
+
+    public int getCluster() {
+        return cluster;
+    }
+
+    public void setCluster(int cluster) {
+        this.cluster = cluster;
+    }
+
+    public void setLikes(List<LikeDto> likes) {
+        this.likes = likes;
+    }
+
+    public List<LikeDto> getLikes() {
+        return likes;
     }
 }

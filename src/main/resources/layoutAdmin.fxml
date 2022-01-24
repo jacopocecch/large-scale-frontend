@@ -8,14 +8,14 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unipi.largescale.gui.FXMLHomeDocumentController">
     <children>
-       <AnchorPane layoutY="152.0" prefHeight="100.0" prefWidth="178.0" style="-fx-background-color: #66B2FF;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="430.0" AnchorPane.topAnchor="152.0">
+       <AnchorPane layoutY="152.0" prefHeight="124.0" prefWidth="178.0" style="-fx-background-color: #66B2FF;" AnchorPane.bottomAnchor="126.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="430.0" AnchorPane.topAnchor="152.0">
           <children>
              <AnchorPane layoutX="-6.0" layoutY="-10.0" prefHeight="402.0" prefWidth="32.0" style="-fx-background-color: #99CCFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <effect>
                    <DropShadow />
                 </effect>
              </AnchorPane>
-             <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutX="-2.0" layoutY="65.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: None;" text="Logout">
+             <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutX="-2.0" layoutY="90.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: None;" text="Logout">
                 <graphic>
                    <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                       <image>
@@ -42,6 +42,15 @@
                    </ImageView>
                 </graphic>
              </Button>
+            <Button alignment="BOTTOM_LEFT" graphicTextGap="10.0" layoutY="61.0" mnemonicParsing="false" onAction="#showStatsAdminPage" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: None;" text="Stats">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="https://cdn-icons-png.flaticon.com/512/711/711976.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
           </children>
           <effect>
              <DropShadow />

@@ -157,6 +157,7 @@ public class FXMLSettingsDocumentController implements Initializable{
         gender.getItems().add("F");
         gender.getItems().add("Not Specified");
         gender.setValue(user.getGender());
+        dateOfBirth.setEditable(false);
         image.setImage(new Image(user.getImage()));
         dateOfBirth.setValue(user.getDateOfBirth());
     }

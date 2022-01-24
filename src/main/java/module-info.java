@@ -31,4 +31,5 @@ module com.unipi.datamining {
     opens com.unipi.largescale to javafx.fxml;
     exports com.unipi.largescale to javafx.fxml, javafx.graphics;
     exports com.unipi.largescale.dtos to com.fasterxml.jackson.databind;
+    exports com.unipi.largescale.entities.aggregations to com.fasterxml.jackson.databind;
 }

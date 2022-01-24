@@ -1,13 +1,16 @@
 package com.unipi.largescale.API;
 import com.unipi.largescale.dtos.*;
-import com.unipi.largescale.entities.ClusterValues;
-import com.unipi.largescale.entities.Comment;
-import com.unipi.largescale.entities.Song;
-import com.unipi.largescale.entities.User;
+import com.unipi.largescale.entities.*;
+import com.unipi.largescale.entities.aggregations.Album;
+import com.unipi.largescale.entities.aggregations.Country;
+import com.unipi.largescale.entities.aggregations.Id;
 import com.unipi.largescale.util.ConfigurationParameters;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -155,10 +158,10 @@ public class API {
         else return null;
     }
 
-    public static ClusterValues getClusterValues(User user){
+    public static ClusterValues getClusterValues(int id){
         ResponseEntity<ClusterValuesDto> response;
         try {
-            response = restTemplate.getForEntity(uri + "/users/cluster_cluster_values/" + user.getId(), ClusterValuesDto.class);
+            response = restTemplate.getForEntity(uri + "/users/cluster_cluster_values/" + id, ClusterValuesDto.class);
         } catch(Exception e){
             System.out.println(e.getMessage().split("\"")[10]);
             return null;
@@ -291,6 +294,58 @@ public class API {
         }
     }
 
+    public static int getClusterHighestVariance(){
+        ResponseEntity<Integer> response;
+        try {
+            response = restTemplate.getForEntity(uri + "/users/clusters/highest_variance", Integer.class);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            return -1;
+        }
+        if(response.getBody() != null ) {
+            return response.getBody();
+        } else return -1;
+    }
+
+    public static Id getMostDanceableCluster(){
+        ResponseEntity<Id> response;
+        try {
+            response = restTemplate.getForEntity(uri + "/songs/most_danceable_cluster", Id.class);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        if(response.getBody() != null ) {
+            return response.getBody();
+        } else return null;
+    }
+
+
+    public static List<Album> getClusterKHighestRatedAlbums(int cluster, int k){
+        ResponseEntity<Album[]> response;
+        try {
+            response = restTemplate.getForEntity(uri + "/songs/top_albums/?cluster=" + cluster + "&k=" + k, Album[].class);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        if(response.getBody() != null ) {
+            return Arrays.stream(response.getBody()).toList();
+        } else return null;
+    }
+
+    public static List<Country> getTopKCountries(int k){
+        ResponseEntity<Country[]> response;
+        try {
+            response = restTemplate.getForEntity(uri + "/users/top_countries/?k=" + k, Country[].class);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        if(response.getBody() != null ) {
+            return Arrays.stream(response.getBody()).toList();
+        } else return null;
+    }
 
      public static void checkForUpdates(User user){
          try {

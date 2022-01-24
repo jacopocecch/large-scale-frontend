@@ -24,6 +24,9 @@ public class SongBean {
     private double valence;
     private ImageView image;
     private List<CommentBean> comments;
+    private int cluster;
+    private int numLikes;
+    private int numUnlikes;
 
 
     public SongBean(Song song){
@@ -49,6 +52,9 @@ public class SongBean {
                 list.add(new CommentBean(comment));
         }
         comments = list;
+        cluster = song.getCluster();
+        numLikes = song.getNumLikes();
+        numUnlikes = song.getNumUnlikes();
     }
 
     public void setId(String id) {
@@ -169,6 +175,30 @@ public class SongBean {
 
     public List<CommentBean> getComments() {
         return comments;
+    }
+
+    public void setNumUnlikes(int numUnlikes) {
+        this.numUnlikes = numUnlikes;
+    }
+
+    public void setNumLikes(int numLikes) {
+        this.numLikes = numLikes;
+    }
+
+    public int getNumUnlikes() {
+        return numUnlikes;
+    }
+
+    public int getNumLikes() {
+        return numLikes;
+    }
+
+    public int getCluster() {
+        return cluster;
+    }
+
+    public void setCluster(int cluster) {
+        this.cluster = cluster;
     }
 }
 

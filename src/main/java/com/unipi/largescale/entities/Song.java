@@ -34,6 +34,9 @@ public class Song {
     private int year;
     private String image;
     private List<Comment> comments;
+    private int cluster;
+    private int numLikes;
+    private int numUnlikes;
 
     public Song(String id, String name, String album, List<String> artists, String image){
         this.id = id;
@@ -84,6 +87,9 @@ public class Song {
                 list.add(new Comment(comment));
         }
         comments = list;
+        cluster = songBean.getCluster();
+        numLikes = songBean.getNumLikes();
+        numUnlikes = songBean.getNumUnlikes();
     }
 
     public Song(InterfaceSongDto song){
@@ -91,7 +97,6 @@ public class Song {
         this.name = song.getName();
         this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png";
         this.artists = Arrays.stream(song.getArtists().split(",")).toList();
-        // aggiusta
         this.album = song.getAlbum();
     }
 
@@ -127,6 +132,12 @@ public class Song {
             }
         }
         this.comments = list;
+        this.cluster = song.getCluster();
+        this.numLikes = 0;
+        for(int i = 0; i < song.getLikes().size(); ++i) {
+            this.numLikes += song.getLikes().get(i).getNumLikes();
+            this.numUnlikes += song.getLikes().get(i).getNumUnlikes();
+        }
     }
 
     public String getId() {
@@ -315,6 +326,30 @@ public class Song {
 
     public List<Comment> getComments() {
         return comments;
+    }
+
+    public void setCluster(int cluster) {
+        this.cluster = cluster;
+    }
+
+    public int getCluster() {
+        return cluster;
+    }
+
+    public int getNumLikes() {
+        return numLikes;
+    }
+
+    public int getNumUnlikes() {
+        return numUnlikes;
+    }
+
+    public void setNumLikes(int numLikes) {
+        this.numLikes = numLikes;
+    }
+
+    public void setNumUnlikes(int numUnlikes) {
+        this.numUnlikes = numUnlikes;
     }
 }
 

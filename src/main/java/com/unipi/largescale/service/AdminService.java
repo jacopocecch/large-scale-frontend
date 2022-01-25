@@ -14,6 +14,7 @@ public class AdminService {
     public static int getMostDanceableCluster(){
         return Objects.requireNonNull(API.getMostDanceableCluster()).getId();
     }
+
     public static List<Country> getTopKCountries(){
         return API.getTopKCountries(3);
     }

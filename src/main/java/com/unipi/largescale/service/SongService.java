@@ -12,6 +12,7 @@ import static com.unipi.largescale.API.API.updatePreferenceSong;
 import static com.unipi.largescale.service.UserService.user;
 
 public class SongService {
+
     public static void likeSong(Song song){
         updatePreferenceSong(user, song, +1);
     }

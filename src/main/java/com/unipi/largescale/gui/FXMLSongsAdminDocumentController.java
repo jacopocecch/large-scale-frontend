@@ -20,9 +20,6 @@ import java.util.ResourceBundle;
 
 import static com.unipi.largescale.service.SongService.*;
 
-
-
-
 public class FXMLSongsAdminDocumentController implements Initializable{
     @FXML
     private AnchorPane anchorPane;

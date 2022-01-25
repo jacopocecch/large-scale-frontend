@@ -4,6 +4,7 @@ import com.unipi.largescale.API.API;
 import com.unipi.largescale.entities.Survey;
 import com.unipi.largescale.entities.User;
 import com.unipi.largescale.entities.aggregations.Album;
+import com.unipi.largescale.gui.FXMLHomeDocumentController;
 
 import java.util.List;
 
@@ -77,6 +78,7 @@ public class UserService {
     }
 
     public static void logoutUser(){
+        FXMLHomeDocumentController.admin = false;
         user = null;
     }
 

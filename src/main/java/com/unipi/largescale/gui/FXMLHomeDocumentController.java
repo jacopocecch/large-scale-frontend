@@ -12,7 +12,7 @@ import static com.unipi.largescale.service.UserService.*;
 
 public class FXMLHomeDocumentController implements Initializable{
     private boolean initialized;
-    protected static boolean admin;
+    public static boolean admin;
     @FXML
     private AnchorPane anchorPane;
     @FXML

@@ -7,6 +7,7 @@ import java.net.URL;
 
 public class LoaderFXML {
     private Pane view;
+
     public Pane getPage(String filename){
         try {
             URL fileUrl = PersonalityClustering.class.getResource("/"+filename+".fxml");

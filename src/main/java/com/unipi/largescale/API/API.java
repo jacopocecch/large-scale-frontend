@@ -16,13 +16,13 @@ import java.util.*;
 
 public class API {
     private static String uri;
+    private static final RestTemplate restTemplate = new RestTemplate();
 
     public static void setConfiguration(ConfigurationParameters confParameters){
         if(confParameters.serverIP != null && confParameters.serverPort != 0)
             uri = "http://" + confParameters.serverIP + ":" + confParameters.serverPort;
         else uri = "http://localhost:8080"; //default parameters
     }
-    private static final RestTemplate restTemplate = new RestTemplate();
 
     public static User registerUser(User user) throws Exception{
         UserDto userDto = new UserDto(user);
@@ -46,7 +46,6 @@ public class API {
             System.out.println(e.getMessage().split("\"")[10]);
         }
     }
-
 
     public static User loginUser(User user) throws Exception{
         LoginDto loginDto = new LoginDto(user);
@@ -319,7 +318,6 @@ public class API {
             return response.getBody();
         } else return null;
     }
-
 
     public static List<Album> getClusterKHighestRatedAlbums(int cluster, int k){
         ResponseEntity<Album[]> response;

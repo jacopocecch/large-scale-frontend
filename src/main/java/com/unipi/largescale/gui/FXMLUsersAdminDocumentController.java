@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
 import java.net.URL;
@@ -21,8 +20,6 @@ import static com.unipi.largescale.service.UserService.*;
 
 
 public class FXMLUsersAdminDocumentController implements Initializable{
-    @FXML
-    private AnchorPane anchorPane;
     @FXML
     private TextField username;
     @FXML
@@ -40,14 +37,13 @@ public class FXMLUsersAdminDocumentController implements Initializable{
 
     @FXML
     private void searchUser(ActionEvent event){
+        System.out.println("Searching user by username...");
         String name = username.getText();
-        System.out.println("calling method");
         List<User> users = getUsersByUsername(name);
         updateTable(users);
     }
 
     private void updateTable(List<User> users) {
-        System.out.println(users != null);
         imageColumn.setCellValueFactory(new PropertyValueFactory<>("image"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         surnameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));

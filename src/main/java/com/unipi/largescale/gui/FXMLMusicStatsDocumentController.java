@@ -28,11 +28,11 @@ public class FXMLMusicStatsDocumentController implements Initializable{
         musicBarChart.setStyle("-fx-bar-fill: blue;");
         XYChart.Series<String, Number> values = new XYChart.Series<>();
         List<Album> albums = getClusterKHighestRatedAlbums();
-        String text = "";
+        StringBuilder text = new StringBuilder();
         for(int i = 0; i < albums.size();++i) {
-            text += albums.get(0).getId() + "\n";
+            text.append(albums.get(0).getId()).append("\n");
         }
-        topAlbums.setText(text);
+        topAlbums.setText(text.toString());
         AverageMusicFeatures musicValues = getAverageClusterMusicValues();
         values.getData().add(new XYChart.Data<>("Danceability", musicValues.getDanceability()));
         values.getData().add(new XYChart.Data<>("Acousticness", musicValues.getAcousticness()));

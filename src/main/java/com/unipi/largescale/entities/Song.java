@@ -9,6 +9,7 @@ import com.unipi.largescale.dtos.SongDto;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Song {
     private String id;
@@ -43,15 +44,11 @@ public class Song {
         this.name = name;
         this.album = album;
         this.artists = artists;
-        if(image == null)
-            this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png";
-        else
-            this.image = image;
+        this.image = Objects.requireNonNullElse(image, "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png");
     }
 
     public Song(String name, String album, List<String> artists, int year, String image, double danceability, double energy, double loudness, double speechiness, double acousticness, double instrumentalness, double liveness, double valence){
         this.name = name;
-        this.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Circle-icons-music.svg/1024px-Circle-icons-music.svg.png";
         this.artists = artists;
         this.album = album;
         this.year = year;
@@ -82,7 +79,6 @@ public class Song {
         valence = songBean.getValence();
         List<Comment> list = new ArrayList<>();
         if(songBean.getComments() != null && songBean.getComments().size() != 0) {
-            System.out.println("size != 0");
             for (CommentBean comment : songBean.getComments())
                 list.add(new Comment(comment));
         }
@@ -126,10 +122,8 @@ public class Song {
         this.year = song.getYear();
         List<Comment> list = new ArrayList<>();
         if (song.getComments() != null){
-            for (CommentSubsetDto comment : song.getComments()) {
-                System.out.println(comment.getText());
+            for (CommentSubsetDto comment : song.getComments())
                 list.add(new Comment(comment));
-            }
         }
         this.comments = list;
         this.cluster = song.getCluster();

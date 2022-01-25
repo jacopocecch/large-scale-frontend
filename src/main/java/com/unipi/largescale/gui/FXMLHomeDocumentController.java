@@ -38,8 +38,6 @@ public class FXMLHomeDocumentController implements Initializable{
         System.out.println("Loading the recommended friends page");
         LoaderFXML object = new LoaderFXML();
         Pane homePane = object.getPage("recommendedUsers");
-        if(homePane == null)
-            System.out.println("HomePane null");
         try {
             if(layoutPane != null)
                 layoutPane.getChildren().clear();
@@ -67,7 +65,7 @@ public class FXMLHomeDocumentController implements Initializable{
 
     @FXML
     private void showUsersAdminPage(ActionEvent event){
-        System.out.println("Showing the users of the admin");
+        System.out.println("Showing the users page to the admin");
         LoaderFXML object = new LoaderFXML();
         Pane homePane = object.getPage("usersAdmin");
         try {
@@ -82,7 +80,7 @@ public class FXMLHomeDocumentController implements Initializable{
 
     @FXML
     private void showStatsAdminPage(ActionEvent event){
-        System.out.println("Showing the stats to the admin");
+        System.out.println("Showing the stats page to the admin");
         LoaderFXML object = new LoaderFXML();
         Pane homePane = object.getPage("statsAdmin");
         try {
@@ -97,7 +95,7 @@ public class FXMLHomeDocumentController implements Initializable{
 
     @FXML
     private void searchSong(ActionEvent event){
-        System.out.println("Showing the stats to the admin");
+        System.out.println("Showing the search songs page");
         LoaderFXML object = new LoaderFXML();
         Pane homePane = object.getPage("searchSongs");
         try {
@@ -112,7 +110,7 @@ public class FXMLHomeDocumentController implements Initializable{
 
     @FXML
     private void showSongsAdminPage(ActionEvent event){
-        System.out.println("Showing the users of the admin");
+        System.out.println("Showing the songs to the admin");
         LoaderFXML object = new LoaderFXML();
         Pane homePane = object.getPage("songsAdmin");
         try {

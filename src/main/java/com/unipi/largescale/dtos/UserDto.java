@@ -31,7 +31,7 @@ public class UserDto implements Serializable {
     public UserDto() {
     }
 
-    public UserDto(String id, String firstName, String lastName, LocalDate dateOfBirth, String gender, String country, String username, String phoneNumber, String email, String password, LocalDate registrationDate, String image, SurveyDto survey, int cluster) {
+    public UserDto(String id, String firstName, String lastName, LocalDate dateOfBirth, String gender, String country, String username, String phoneNumber, String email, String password, LocalDate registrationDate, String image, int cluster) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

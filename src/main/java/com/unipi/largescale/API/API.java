@@ -8,10 +8,7 @@ import com.unipi.largescale.entities.aggregations.Id;
 import com.unipi.largescale.util.ConfigurationParameters;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -61,7 +58,6 @@ public class API {
                 throw new Exception("Server not connected....");
             else throw new Exception(e.getMessage().split("\"")[10]);
         }
-        System.out.println("Admin: " + response.getAdmin());
         if(response != null)
             return new User(response);
         else return null;
@@ -154,13 +150,12 @@ public class API {
             System.out.println(e.getMessage().split("\"")[10]);
             return null;
         }
-        for(InterfaceSongDto in: response.getBody()) {
-            in.setArtists(in.getArtists().substring(1, in.getArtists().length() - 1));
-            System.out.println(in.getArtists());
-        }
-        if(response.getBody() != null )
+
+        if(response.getBody() != null ) {
+            for(InterfaceSongDto in: response.getBody())
+                in.setArtists(in.getArtists().substring(1, in.getArtists().length() - 1));
             return Arrays.stream(response.getBody()).map(Song::new).toList();
-        else return null;
+        } else return null;
     }
 
     public static Survey getClusterValues(int id){

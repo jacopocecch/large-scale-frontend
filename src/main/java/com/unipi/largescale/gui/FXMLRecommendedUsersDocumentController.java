@@ -114,7 +114,7 @@ public class FXMLRecommendedUsersDocumentController implements Initializable{
                         };
                     }
                 };
-        sendRequestColumn.setCellFactory(cellFactory);;
+        sendRequestColumn.setCellFactory(cellFactory);
         List<User> similarUsers = getSimilarUsers();
         ObservableList<UserBean> userBeans = FXCollections.observableArrayList();
         if(similarUsers != null) {

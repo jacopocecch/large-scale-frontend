@@ -138,8 +138,7 @@ public class FXMLRecommendedSongsDocumentController implements Initializable{
                                 } else {
                                     btn.setStyle("-fx-background-color: #CCE5FF");
                                     btn.setOnAction(event -> {
-                                        SongBean song = getTableView().getItems().get(getIndex());
-                                        FXMLSongInfoDocumentController.selectedSong = song;
+                                        FXMLSongInfoDocumentController.selectedSong = getTableView().getItems().get(getIndex());
                                         showSongInfo(event);
                                         System.out.println("User want more information about the song");
                                     });

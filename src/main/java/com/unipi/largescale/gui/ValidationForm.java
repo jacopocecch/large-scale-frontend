@@ -29,8 +29,6 @@ public class ValidationForm {
     }
 
     public static boolean validYear(double year) {
-        if(year < LocalDate.now().getYear() - 110 || year >= LocalDate.now().getYear())
-            return false;
-        else return true;
+        return !(year < LocalDate.now().getYear() - 110) && !(year >= LocalDate.now().getYear());
     }
 }

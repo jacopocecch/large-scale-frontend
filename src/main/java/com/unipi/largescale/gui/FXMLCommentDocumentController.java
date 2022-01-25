@@ -1,6 +1,5 @@
 package com.unipi.largescale.gui;
 
-import com.unipi.largescale.PersonalityClustering;
 import com.unipi.largescale.beans.CommentBean;
 import com.unipi.largescale.entities.Comment;
 import com.unipi.largescale.entities.Song;

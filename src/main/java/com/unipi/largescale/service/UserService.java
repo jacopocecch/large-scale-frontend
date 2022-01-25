@@ -82,11 +82,9 @@ public class UserService {
 
     public static List<Album> getClusterKHighestRatedAlbums(){
         List<Album> list = API.getClusterKHighestRatedAlbums(user.getCluster(), 1);
-        System.out.println(list.size());
+        assert list != null;
         return list;
     }
-
-
 
     public static void updateUserInfo(User newUser){
         newUser.setAgreeableness(user.getAgreeableness());
@@ -167,7 +165,6 @@ public class UserService {
         return API.searchUserByUsername(username);
     }
 
-
     public static void deleteUser(User user){
         API.deleteUser(user);
     }
@@ -187,7 +184,7 @@ public class UserService {
     public static void loginUser(String loginEmail, String loginPassword) throws Exception {
         User userLogin = new User(loginEmail, loginPassword);
         user = API.loginUser(userLogin);
-        System.out.println(user.getAdmin());
+        assert user != null;
     }
 
     public static void addFriendRequest(String receiverId){

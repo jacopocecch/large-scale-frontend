@@ -34,6 +34,7 @@ public class SongService {
 
     public static AverageMusicFeatures getAverageClusterMusicValues(){
         List<AverageMusicFeatures> list = API.getAverageMusicFeaturesByCluster();
+        assert list != null;
         return list.get(user.getCluster());
     }
 
@@ -54,7 +55,7 @@ public class SongService {
     }
 
     public static void addNewSong(String name, String album, String artist, int year, String image, double danceability, double energy, double loudness, double speechiness, double acousticness, double instrumentalness, double liveness, double valence) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         list.add(artist);
         API.createSong(new Song(name, album, list, year, image, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence));
     }

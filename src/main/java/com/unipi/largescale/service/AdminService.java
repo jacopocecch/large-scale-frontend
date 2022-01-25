@@ -4,6 +4,7 @@ import com.unipi.largescale.API.API;
 import com.unipi.largescale.entities.aggregations.Country;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AdminService {
     public static int getClusterHighestVariance(){
@@ -11,7 +12,7 @@ public class AdminService {
     }
 
     public static int getMostDanceableCluster(){
-        return API.getMostDanceableCluster().getId();
+        return Objects.requireNonNull(API.getMostDanceableCluster()).getId();
     }
     public static List<Country> getTopKCountries(){
         return API.getTopKCountries(3);

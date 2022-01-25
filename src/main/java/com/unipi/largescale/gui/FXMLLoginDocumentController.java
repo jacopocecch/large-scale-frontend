@@ -1,6 +1,5 @@
 package com.unipi.largescale.gui;
 
-import com.unipi.largescale.PersonalityClustering;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

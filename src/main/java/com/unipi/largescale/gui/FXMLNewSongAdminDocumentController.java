@@ -10,7 +10,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -26,8 +25,6 @@ import static com.unipi.largescale.gui.ValidationForm.validYear;
 
 
 public class FXMLNewSongAdminDocumentController implements Initializable{
-    @FXML
-    private AnchorPane anchorPane;
     @FXML
     private TextField name;
     @FXML
@@ -61,7 +58,7 @@ public class FXMLNewSongAdminDocumentController implements Initializable{
         String songName = name.getText();
         String songAlbum = album.getText();
         String songArtist = artist.getText();
-        int songYear = -1;
+        int songYear;
         String songYearString = year.getText();
         double songDanceability = danceability.getValue();
         double songEnergy = energy.getValue();
